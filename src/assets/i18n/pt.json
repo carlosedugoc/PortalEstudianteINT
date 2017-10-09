@@ -1,6 +1,6 @@
 {
     "Title": "Exemplo de tradução",
-    "Intro": "Eu sou Arthur, tengo 42 años de idade.",
+    "Intro": "Eu sou name, tengo {{age}} años de idade.",
     "Startpage": {
         "TranslationSections": "Olá mundo"
     },

@@ -1,6 +1,6 @@
 {
     "Title": "Ejemplo de traducción",
-    "Intro": "Hola yo soy Artur, tengo 42 años.",
+    "Intro": "Hola yo soy {{name}}, tengo {{age}} años.",
     "Startpage": {
         "TranslationSections": "Hola mundo"
     },

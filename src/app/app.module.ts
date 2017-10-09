@@ -5,6 +5,8 @@ import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { AppComponent } from './app.component';
 import { AdministracionComponent } from './components/administracion/administracion.component';
+import { FiltroServiciosPipe } from './pipes/filtro-servicios.pipe';
+import { HttpModule } from "@angular/http";
 
 export function createTranslateLoader(http: HttpClient) {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -13,11 +15,13 @@ export function createTranslateLoader(http: HttpClient) {
 @NgModule({
   declarations: [
     AppComponent,
-    AdministracionComponent
+    AdministracionComponent,
+    FiltroServiciosPipe
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
+    HttpModule,
     TranslateModule.forRoot({
         loader: {
             provide: TranslateLoader,

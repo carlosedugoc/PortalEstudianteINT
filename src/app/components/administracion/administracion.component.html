@@ -23,17 +23,15 @@
   <thead>
     <tr>
       <td colspan="1" rowspan="2"  style="text-align: center; vertical-align: middle">servicios</td>
-      <td colspan="2" rowspan="1" style="text-align: center;">Modalidad</td>
-      <td colspan="2" rowspan="1" style="text-align: center;">Nivel</td>
+      <td [attr.colspan]="modalidades.length" rowspan="1" style="text-align: center;">Modalidad</td>
+      <td [attr.colspan]="niveles.length" rowspan="1" style="text-align: center;">Nivel</td>
       <td colspan="6" rowspan="1" style="text-align: center;">Tipo</td>
       <td colspan="1" rowspan="2" style="text-align: center; vertical-align: middle">URL</td>
       <td colspan="1" rowspan="2" style="text-align: center; vertical-align: middle">Habilitar</td>
     </tr>
     <tr>
-      <td>presencial</td>
-      <td>Virtual</td>
-      <td>Pregrado</td>
-      <td>Posgrado</td>
+      <td *ngFor="let modalidad of modalidades">{{modalidad.description}}</td>
+      <td *ngFor="let nivel of niveles">{{nivel.description}}</td>
       <td>Activo</td>
       <td>Inactivo</td>
       <td>Egresado</td>
@@ -43,27 +41,15 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>
+    <tr *ngFor="let servicio of servicios | filtroServicios:1">
+      <th scope="row" >{{servicio.nombre}}</th>
+      <td *ngFor="let modalidad of modalidades">
         <label class="custom-control custom-checkbox">
           <input type="checkbox" class="custom-control-input">
           <span class="custom-control-indicator"></span>
         </label>
       </td>
-      <td>
-        <label class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input">
-          <span class="custom-control-indicator"></span>
-        </label>
-      </td>
-      <td>
-        <label class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input">
-          <span class="custom-control-indicator"></span>
-        </label>
-      </td>
-      <td>
+      <td *ngFor="let nivel of niveles">
         <label class="custom-control custom-checkbox">
           <input type="checkbox" class="custom-control-input">
           <span class="custom-control-indicator"></span>
@@ -105,9 +91,14 @@
           <span class="custom-control-indicator"></span>
         </label>
       </td>
-      <td></td>
       <td>
-        <input type="range" class="form-control" name="" id="" aria-describedby="helpId" placeholder="" min="0" max="1">
+        <div class="form-group">
+          <input type="mail" class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
+        </div>
+      </td>
+      <td>
+          <input type="checkbox" checked data-toggle="toggle" data-on="Habilitado" data-off="Deshabilitado">
+        <!-- <input type="range" class="form-control" name="" id="" aria-describedby="helpId" placeholder="" min="0" max="1"> -->
       </td>
     </tr>
   </tbody>
@@ -118,227 +109,90 @@
 
 
     <div role="tabpanel" class="tab-pane fade" id="t2">
-   <table class="table">
-  <thead  class="thead-inverse">
-    <tr>
-      <td colspan="1" rowspan="2"  style="text-align: center; vertical-align: middle">servicios</td>
-      <td colspan="2" rowspan="1" style="text-align: center;">Modalidad</td>
-      <td colspan="2" rowspan="1" style="text-align: center;">Nivel</td>
-      <td colspan="6" rowspan="1" style="text-align: center;">Tipo</td>
-      <td colspan="1" rowspan="2" style="text-align: center; vertical-align: middle">URL</td>
-      <td colspan="1" rowspan="2" style="text-align: center; vertical-align: middle">Habilitar</td>
-    </tr>
-    <tr>
-      <td>presencial</td>
-      <td>Virtual</td>
-      <td>Pregrado</td>
-      <td>Posgrado</td>
-      <td>Activo</td>
-      <td>Inactivo</td>
-      <td>Egresado</td>
-      <td>Graduado</td>
-      <td>Acudiente</td>
-      <td>Inscrito</td>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>
-        <label class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input">
-          <span class="custom-control-indicator"></span>
-        </label>
-      </td>
-      <td>
-        <label class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input">
-          <span class="custom-control-indicator"></span>
-        </label>
-      </td>
-      <td>
-        <label class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input">
-          <span class="custom-control-indicator"></span>
-        </label>
-      </td>
-      <td>
-        <label class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input">
-          <span class="custom-control-indicator"></span>
-        </label>
-      </td>
-      <td>
-        <label class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input">
-          <span class="custom-control-indicator"></span>
-        </label>
-      </td>
-      <td>
-        <label class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input">
-          <span class="custom-control-indicator"></span>
-        </label>
-      </td>
-      <td>
-        <label class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input">
-          <span class="custom-control-indicator"></span>
-        </label>
-      </td>
-      <td>
-        <label class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input">
-          <span class="custom-control-indicator"></span>
-        </label>
-      </td>
-      <td>
-        <label class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input">
-          <span class="custom-control-indicator"></span>
-        </label>
-      </td>
-            <td>
-        <label class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input">
-          <span class="custom-control-indicator"></span>
-        </label>
-      </td>
-      <td></td>
-      <td></td>
-    </tr>
-       <tr>
-      <th scope="row">1</th>
-      <td>
-        <label class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input">
-          <span class="custom-control-indicator"></span>
-        </label>
-      </td>
-      <td>
-        <label class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input">
-          <span class="custom-control-indicator"></span>
-        </label>
-      </td>
-      <td>
-        <label class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input">
-          <span class="custom-control-indicator"></span>
-        </label>
-      </td>
-      <td>
-        <label class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input">
-          <span class="custom-control-indicator"></span>
-        </label>
-      </td>
-      <td>
-        <label class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input">
-          <span class="custom-control-indicator"></span>
-        </label>
-      </td>
-      <td>
-        <label class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input">
-          <span class="custom-control-indicator"></span>
-        </label>
-      </td>
-      <td>
-        <label class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input">
-          <span class="custom-control-indicator"></span>
-        </label>
-      </td>
-      <td>
-        <label class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input">
-          <span class="custom-control-indicator"></span>
-        </label>
-      </td>
-      <td>
-        <label class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input">
-          <span class="custom-control-indicator"></span>
-        </label>
-      </td>
-            <td>
-        <label class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input">
-          <span class="custom-control-indicator"></span>
-        </label>
-      </td>
-            <td></td>
-      <td></td>
-    </tr>
-        <tr>
-      <th scope="row">1</th>
-      <td>
-        <label class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input">
-          <span class="custom-control-indicator"></span>
-        </label>
-      </td>
-      <td>
-        <label class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input">
-          <span class="custom-control-indicator"></span>
-        </label>
-      </td>
-      <td>
-        <label class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input">
-          <span class="custom-control-indicator"></span>
-        </label>
-      </td>
-      <td>
-        <label class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input">
-          <span class="custom-control-indicator"></span>
-        </label>
-      </td>
-      <td>
-        <label class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input">
-          <span class="custom-control-indicator"></span>
-        </label>
-      </td>
-      <td>
-        <label class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input">
-          <span class="custom-control-indicator"></span>
-        </label>
-      </td>
-      <td>
-        <label class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input">
-          <span class="custom-control-indicator"></span>
-        </label>
-      </td>
-      <td>
-        <label class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input">
-          <span class="custom-control-indicator"></span>
-        </label>
-      </td>
-      <td>
-        <label class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input">
-          <span class="custom-control-indicator"></span>
-        </label>
-      </td>
-            <td>
-        <label class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input">
-          <span class="custom-control-indicator"></span>
-        </label>
-      </td>
-            <td></td>
-      <td></td>
-    </tr>
-  </tbody>
-</table>
+        <table class="table table-inverse">
+            <thead>
+              <tr>
+                <td colspan="1" rowspan="2"  style="text-align: center; vertical-align: middle">servicios</td>
+                <td [attr.colspan]="modalidades.length" rowspan="1" style="text-align: center;">Modalidad</td>
+                <td [attr.colspan]="niveles.length" rowspan="1" style="text-align: center;">Nivel</td>
+                <td colspan="6" rowspan="1" style="text-align: center;">Tipo</td>
+                <td colspan="1" rowspan="2" style="text-align: center; vertical-align: middle">URL</td>
+                <td colspan="1" rowspan="2" style="text-align: center; vertical-align: middle">Habilitar</td>
+              </tr>
+              <tr>
+                <td *ngFor="let modalidad of modalidades">{{modalidad.description}}</td>
+                <td *ngFor="let nivel of niveles">{{nivel.description}}</td>
+                <td>Activo</td>
+                <td>Inactivo</td>
+                <td>Egresado</td>
+                <td>Graduado</td>
+                <td>Acudiente</td>
+                <td>Inscrito</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let servicio of servicios | filtroServicios:2">
+                <th scope="row" >{{servicio.nombre}}</th>
+                <td *ngFor="let modalidad of modalidades">
+                  <label class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input">
+                    <span class="custom-control-indicator"></span>
+                  </label>
+                </td>
+                <td *ngFor="let nivel of niveles">
+                  <label class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input">
+                    <span class="custom-control-indicator"></span>
+                  </label>
+                </td>
+                <td>
+                  <label class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input">
+                    <span class="custom-control-indicator"></span>
+                  </label>
+                </td>
+                <td>
+                  <label class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input">
+                    <span class="custom-control-indicator"></span>
+                  </label>
+                </td>
+                <td>
+                  <label class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input">
+                    <span class="custom-control-indicator"></span>
+                  </label>
+                </td>
+                <td>
+                  <label class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input">
+                    <span class="custom-control-indicator"></span>
+                  </label>
+                </td>
+                <td>
+                  <label class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input">
+                    <span class="custom-control-indicator"></span>
+                  </label>
+                </td>
+                      <td>
+                  <label class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input">
+                    <span class="custom-control-indicator"></span>
+                  </label>
+                </td>
+                <td>
+                  <div class="form-group">
+                    <input type="mail" class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
+                  </div>
+                </td>
+                <td>
+                    <input type="checkbox" checked data-toggle="toggle" data-on="Habilitado" data-off="Deshabilitado">
+                  <!-- <input type="range" class="form-control" name="" id="" aria-describedby="helpId" placeholder="" min="0" max="1"> -->
+                </td>
+              </tr>
+            </tbody>
+          </table>
 
   </div>
 </div>
