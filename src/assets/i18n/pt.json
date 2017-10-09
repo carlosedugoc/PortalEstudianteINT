@@ -1,0 +1,10 @@
+{
+    "Title": "Exemplo de tradução",
+    "Intro": "Eu sou Arthur, tengo 42 años de idade.",
+    "Startpage": {
+        "TranslationSections": "Olá mundo"
+    },
+     "Aboutpage": {
+        "TranslationSections": "Nós somos Letsboot"
+    }
+}
