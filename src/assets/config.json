@@ -1,0 +1,16 @@
+    [
+        {
+            "Universidad":"Fundación Universitaria del Área Andina",
+            "Codigo":"1",
+            "ServicioModalidad":"https://apis.qailumno.com/sis/fuaa/v1/api/modalities",
+            "ServicioNivel":"https://apis.qailumno.com/sis/fuaa/v1/api/academicLevels",
+            "ServicioTipo":""
+        },
+        {
+            "Universidad":"Politécnico Gran Colombiano",
+            "Codigo":"2",
+            "ServicioModalidad":"https://apis.qailumno.com/sis/poli/v1/api/modalities",
+            "ServicioNivel":"https://apis.qailumno.com/sis/poli/v1/api/academicLevels",
+            "ServicioTipo":""
+        }
+    ]

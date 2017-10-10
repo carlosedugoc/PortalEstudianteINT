@@ -65,8 +65,7 @@ getServicios(){
   return this.servicios;
 }
 
-getModalidades(token:string){
-  let url = 'https://apis.qailumno.com/sis/poli/v1/api/modalities'
+getModalidades(token:string, url:string ){
       let headers = new Headers({
         'authorization':`Bearer ${token}`
       });
@@ -74,9 +73,7 @@ getModalidades(token:string){
 }
 
 
-getNiveles(token:string ){
-  let url = 'https://apis.qailumno.com/sis/fuaa/v1/api/academicLevels'
-
+getNiveles(token:string,url:string ){
     let headers = new Headers({
       'authorization':`Bearer ${token}`
     });

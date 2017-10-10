@@ -1,33 +1,41 @@
+
+<div class="form-group">
+  <label for="">{{ 'Administracion.LabelUniversidad' | translate }}</label>
+  <select class="form-control" (change)="cargar_datos($event.target.value)">
+      <option value="2">Politécnico Gran Colombiano</option>
+      <option value="1" >Fundación Universitaria del Área Andina</option>
+  </select>
+</div>
+
+
 <ul class="nav nav-pills nav-fill">
   <li class="nav-item">
-    <a class="nav-link active" href="#t1" role="tab" data-toggle="tab">Active</a>
-
+    <a class="nav-link active" href="#t1" role="tab" data-toggle="tab">{{ 'Administracion.LabelConsultaAcademica' | translate }}</a>
 
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#t2" role="tab" data-toggle="tab">Longer nav link</a>
-   
-  </li>
-  <!--<li class="nav-item">
-    <a class="nav-link" href="#" role="tab" data-toggle="tab">Link</a>
+    <a class="nav-link" href="#t2" role="tab" data-toggle="tab">{{ 'Administracion.LabelSolicitudFinanciera' | translate }}</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link disabled" href="#" role="tab" data-toggle="tab">Disabled</a>
-  </li>-->
+    <a class="nav-link" href="#" role="tab" data-toggle="tab">{{ 'Administracion.LabelSolicitudAcademica' | translate }}</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled" href="#" role="tab" data-toggle="tab">{{ 'Administracion.LabelPortales' | translate }}</a>
+  </li>
 </ul>
 
 
 <div class="tab-content">
   <div role="tabpanel" class="tab-pane fade show active" id="t1">
-   <table class="table table-inverse">
+   <table class="table table-inverse" *ngIf="!loading">
   <thead>
     <tr>
-      <td colspan="1" rowspan="2"  style="text-align: center; vertical-align: middle">servicios</td>
-      <td [attr.colspan]="modalidades.length" rowspan="1" style="text-align: center;">Modalidad</td>
-      <td [attr.colspan]="niveles.length" rowspan="1" style="text-align: center;">Nivel</td>
-      <td colspan="6" rowspan="1" style="text-align: center;">Tipo</td>
+      <td colspan="1" rowspan="2"  style="text-align: center; vertical-align: middle">{{ 'Administracion.LabelServicios' | translate }}</td>
+      <td [attr.colspan]="total_modalidades" rowspan="1" style="text-align: center;">{{ 'Administracion.LabelModalidades' | translate }}</td>
+      <td [attr.colspan]="total_niveles" rowspan="1" style="text-align: center;">{{ 'Administracion.LabelNiveles' | translate }}</td>
+      <td colspan="6" rowspan="1" style="text-align: center;">{{ 'Administracion.LabelTipos' | translate }}</td>
       <td colspan="1" rowspan="2" style="text-align: center; vertical-align: middle">URL</td>
-      <td colspan="1" rowspan="2" style="text-align: center; vertical-align: middle">Habilitar</td>
+      <td colspan="1" rowspan="2" style="text-align: center; vertical-align: middle">{{ 'Administracion.LabelHabilidar' | translate }}</td>
     </tr>
     <tr>
       <td *ngFor="let modalidad of modalidades">{{modalidad.description}}</td>
@@ -113,8 +121,8 @@
             <thead>
               <tr>
                 <td colspan="1" rowspan="2"  style="text-align: center; vertical-align: middle">servicios</td>
-                <td [attr.colspan]="modalidades.length" rowspan="1" style="text-align: center;">Modalidad</td>
-                <td [attr.colspan]="niveles.length" rowspan="1" style="text-align: center;">Nivel</td>
+                <td [attr.colspan]="total_modalidades" rowspan="1" style="text-align: center;">Modalidad</td>
+                <td [attr.colspan]="total_niveles" rowspan="1" style="text-align: center;">Nivel</td>
                 <td colspan="6" rowspan="1" style="text-align: center;">Tipo</td>
                 <td colspan="1" rowspan="2" style="text-align: center; vertical-align: middle">URL</td>
                 <td colspan="1" rowspan="2" style="text-align: center; vertical-align: middle">Habilitar</td>

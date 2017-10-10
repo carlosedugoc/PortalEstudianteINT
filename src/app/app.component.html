@@ -1,7 +1,8 @@
-<h1 translate>Title</h1>
+<!-- <h1 translate>Title</h1>
 
 <div>
   {{ 'Intro' | translate:user }}
+  {{ 'Administracion.LabelUniversidad' | translate }}
 </div>
 
 <div>
@@ -9,14 +10,17 @@
 </div>
 <div translate>
   Startpage.TranslationSections 
-</div>
+</div> -->
 
+<div class="container main-container">
+    <div class="form-group">
+        <label for="">Idioma</label>
+        <select class="form-control" (change)="switchLanguage($event.target.value)">
+            <option value="es">Español</option>
+            <option value="en" >Ingles</option>
+            <option value="pt" >Portugues</option>
+        </select>
+      </div>
 
-<button class="btn btn-success" (click)="switchLanguage('en')">English</button>
-
-<button class="btn btn-warning"  (click)="switchLanguage('es')">Español</button>
-
-<button class="btn btn-danger"  (click)="switchLanguage('pt')">Portugues</button>
-<div class="container">
-  <app-administracion></app-administracion>
+    <app-administracion></app-administracion>
 </div>
