@@ -26,10 +26,14 @@ export class AdministracionComponent {
 
   constructor(private adminService:AdministracionService,
               private http: Http) { 
-    this.cargar_datos("2")
+    this.loading = true
   }
 
   cargar_datos(IdUniversidad:String){
+    if (IdUniversidad == "0"){
+      this.loading = true 
+      return
+    }
     this.servicios = this.adminService.getServicios()
     this.loading = true 
     this.getToken().then(()=>{

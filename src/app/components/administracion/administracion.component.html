@@ -2,6 +2,7 @@
 <div class="form-group">
   <label for="">{{ 'Administracion.LabelUniversidad' | translate }}</label>
   <select class="form-control" (change)="cargar_datos($event.target.value)">
+      <option value="0" >Seleccione Universidad...</option>
       <option value="2">Politécnico Gran Colombiano</option>
       <option value="1" >Fundación Universitaria del Área Andina</option>
   </select>
