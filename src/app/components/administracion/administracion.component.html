@@ -1,5 +1,14 @@
 
 <div class="form-group">
+    <label for="">Usuario</label>
+    <select class="form-control" (change)="cargar_datos($event.target.value)" name="usuarios" >
+        <option value="0">Administrador Ilumno</option>
+        <option value="1" >Administrador UniAndina</option>
+        <option value="2" >Administrador Politectico</option>
+    </select>
+  </div>
+
+<div class="form-group" *ngIf="rol==0" >
   <label for="">{{ 'Administracion.LabelUniversidad' | translate }}</label>
   <select class="form-control" (change)="cargar_datos($event.target.value)">
       <option value="0" >Seleccione Universidad...</option>
@@ -24,29 +33,34 @@
     <a class="nav-link disabled" href="#" role="tab" data-toggle="tab">{{ 'Administracion.LabelPortales' | translate }}</a>
   </li>
 </ul>
+<div *ngIf="loading">
+  <br>
+  <i class="fa fa-spinner fa-pulse fa-2x fa-fw"></i>
+  <span class="sr-only">Loading...</span>
+
+</div>
+
+
 
 
 <div class="tab-content">
   <div role="tabpanel" class="tab-pane fade show active" id="t1">
+
+
    <table class="table table-inverse" *ngIf="!loading">
   <thead>
     <tr>
       <td colspan="1" rowspan="2"  style="text-align: center; vertical-align: middle">{{ 'Administracion.LabelServicios' | translate }}</td>
       <td [attr.colspan]="total_modalidades" rowspan="1" style="text-align: center;">{{ 'Administracion.LabelModalidades' | translate }}</td>
       <td [attr.colspan]="total_niveles" rowspan="1" style="text-align: center;">{{ 'Administracion.LabelNiveles' | translate }}</td>
-      <td colspan="6" rowspan="1" style="text-align: center;">{{ 'Administracion.LabelTipos' | translate }}</td>
+      <td [attr.colspan]="total_estados" rowspan="1" style="text-align: center;">{{ 'Administracion.LabelEstados' | translate }}</td>
       <td colspan="1" rowspan="2" style="text-align: center; vertical-align: middle">URL</td>
       <td colspan="1" rowspan="2" style="text-align: center; vertical-align: middle">{{ 'Administracion.LabelHabilidar' | translate }}</td>
     </tr>
     <tr>
-      <td *ngFor="let modalidad of modalidades">{{modalidad.description}}</td>
-      <td *ngFor="let nivel of niveles">{{nivel.description}}</td>
-      <td>Activo</td>
-      <td>Inactivo</td>
-      <td>Egresado</td>
-      <td>Graduado</td>
-      <td>Acudiente</td>
-      <td>Inscrito</td>
+    <td *ngFor="let modalidad of modalidades">{{modalidad.description}}</td>
+    <td *ngFor="let nivel of niveles">{{nivel.description}}</td>
+    <td *ngFor="let estado of estados">{{estado.description}}</td>
     </tr>
   </thead>
   <tbody>
@@ -64,37 +78,7 @@
           <span class="custom-control-indicator"></span>
         </label>
       </td>
-      <td>
-        <label class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input">
-          <span class="custom-control-indicator"></span>
-        </label>
-      </td>
-      <td>
-        <label class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input">
-          <span class="custom-control-indicator"></span>
-        </label>
-      </td>
-      <td>
-        <label class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input">
-          <span class="custom-control-indicator"></span>
-        </label>
-      </td>
-      <td>
-        <label class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input">
-          <span class="custom-control-indicator"></span>
-        </label>
-      </td>
-      <td>
-        <label class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input">
-          <span class="custom-control-indicator"></span>
-        </label>
-      </td>
-            <td>
+      <td *ngFor="let estado of estados">
         <label class="custom-control custom-checkbox">
           <input type="checkbox" class="custom-control-input">
           <span class="custom-control-indicator"></span>
@@ -205,6 +189,7 @@
 
   </div>
 </div>
+
 
 
 

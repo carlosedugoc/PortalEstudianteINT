@@ -9,9 +9,9 @@
     },
     "Administracion":{
         "LabelServicios":"Servicios",
-        "LabelModalidades":"Modalidades",
-        "LabelNiveles":"Niveles",
-        "LabelTipos":"Tipos",
+        "LabelModalidades":"Modalidad Académica",
+        "LabelNiveles":"Nivel Académico",
+        "LabelEstados":"Tipo de Usuario",
         "LabelHabilidar":"Habilitar/Deshabilitar",
         "LabelConsultaAcademica":"Consulta Académica",
         "LabelSolicitudFinanciera":"Solicitud Financiera",

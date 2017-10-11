@@ -4,6 +4,6 @@ export class UrlServicios {
         public Codigo:string,
         public ServicioModalidad:string,
         public ServicioNivel:string,
-        public ServicioTipo:string
+        public ServicioEstado:string
     ){}
 }

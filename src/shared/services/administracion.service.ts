@@ -65,19 +65,17 @@ getServicios(){
   return this.servicios;
 }
 
-getModalidades(token:string, url:string ){
-      let headers = new Headers({
-        'authorization':`Bearer ${token}`
-      });
-      return this.http.get(url,{headers}).map(respuesta=>respuesta.json())
-}
-
-
-getNiveles(token:string,url:string ){
-    let headers = new Headers({
-      'authorization':`Bearer ${token}`
-    });
-    return this.http.get(url,{headers}).map(respuesta=>respuesta.json())
+getTitulos(token:string, url:string ){
+  let headers = new Headers({
+    'authorization':`Bearer ${token}`
+  });
+  let fecha = new Date
+  //console.log("Esta es la respuesta del servicio", "antes", url,fecha.getSeconds())
+  return this.http.get(url,{headers})
+      .map(respuesta=>{
+        //console.log("Esta es la respuesta del servicio", respuesta.json(), url,fecha.getSeconds())
+        return respuesta.json()
+      })
 }
 
 getToken(){

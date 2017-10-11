@@ -4,13 +4,13 @@
             "Codigo":"1",
             "ServicioModalidad":"https://apis.qailumno.com/sis/fuaa/v1/api/modalities",
             "ServicioNivel":"https://apis.qailumno.com/sis/fuaa/v1/api/academicLevels",
-            "ServicioTipo":""
+            "ServicioEstado":"https://apis.qailumno.com/sis/fuaa/v1/sis/status"
         },
         {
             "Universidad":"Politécnico Gran Colombiano",
             "Codigo":"2",
             "ServicioModalidad":"https://apis.qailumno.com/sis/poli/v1/api/modalities",
             "ServicioNivel":"https://apis.qailumno.com/sis/poli/v1/api/academicLevels",
-            "ServicioTipo":""
+            "ServicioEstado":"https://apis.qailumno.com/sis/poli/v1/sis/status"
         }
     ]

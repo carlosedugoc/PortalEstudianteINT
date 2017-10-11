@@ -9,9 +9,9 @@
     },
     "Administracion":{
         "LabelServicios":"Services",
-        "LabelModalidades":"Modalities",
-        "LabelNiveles":"Levels",
-        "LabelTipos":"Kind",
+        "LabelModalidades":"Academic Modality",
+        "LabelNiveles":"Academic Levels",
+        "LabelEstados":"User Types",
         "LabelHabilidar":"Enable/Disable",
         "LabelConsultaAcademica":"Academic Query",
         "LabelSolicitudFinanciera":"Financial Request ",
