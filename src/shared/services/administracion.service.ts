@@ -61,7 +61,7 @@ export class AdministracionService {
     }
   ]
 
-getServicios(){
+getServicios(IdUniversidad:String){
   return this.servicios;
 }
 

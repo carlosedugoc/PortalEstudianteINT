@@ -13,7 +13,10 @@
 </div> -->
 
 <div class="container main-container">
-    <div class="form-group">
+    <div class="alert alert-dark" role="alert">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
         <label for="">Idioma</label>
         <select class="form-control" (change)="switchLanguage($event.target.value)">
             <option value="es">Español</option>
@@ -21,6 +24,18 @@
             <option value="pt" >Portugues</option>
         </select>
       </div>
-
-    <app-administracion></app-administracion>
+    </div>
+    <div class="col-md-6">
+    <div class="form-group">
+        <label for="">Usuario</label>
+          <select class="form-control" (change)="universidad=$event.target.value" name="usuarios" >
+            <option value="0">Administrador Ilumno</option>
+            <option value="1" >Administrador UniAndina</option>
+            <option value="2" >Administrador Politectico</option>
+        </select>
+      </div>
+    </div>
+  </div>
+    </div>
+    <app-administracion [universidad]="universidad" ></app-administracion>
 </div>

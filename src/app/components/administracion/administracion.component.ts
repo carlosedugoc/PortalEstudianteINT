@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import { AdministracionService } from "../../../shared/services/administracion.service";
 import { Servicio } from "../../../shared/models/servicio";
 import { Nivel } from "../../../shared/models/nivel";
@@ -13,7 +13,8 @@ import { Http, Response, Headers, RequestOptions } from '@angular/http';
   styleUrls: ['./administracion.component.css'],
   providers: [AdministracionService]
 })
-export class AdministracionComponent {
+export class AdministracionComponent implements OnChanges {
+  @Input('universidad') universidad = null;
   public servicios:Servicio[]
   public niveles:Nivel[]
   public modalidades:Modalidad[]
@@ -26,41 +27,61 @@ export class AdministracionComponent {
   public url_servicios:UrlServicios[]
   public url_servicio:UrlServicios
   public loading:boolean
-  public rol:number
+  public mostrar_tabla:boolean
 
   constructor(private adminService:AdministracionService,
               private http: Http) { 
-    this.loading = true
+                this.loading = false
+                this.mostrar_tabla = false 
   }
 
   cargar_datos(IdUniversidad:String){
+    this.url_servicio = undefined
     if (IdUniversidad == "0"){
-      this.loading = true 
+      this.mostrar_tabla = false 
       return
     }
-    this.servicios = this.adminService.getServicios()
-    this.loading = true 
-    this.getToken().then(()=>{
-      this.getUniversidad().then(()=>{
-        for(let item of this.url_servicios){
-          if (item.Codigo == IdUniversidad){
-            this.url_servicio = item
-            return this.url_servicio
+    this.loading = true
+    this.getServicios(IdUniversidad).then(()=>{
+      this.getToken().then(()=>{
+        this.getUniversidad().then(()=>{
+          for(let item of this.url_servicios){
+            if (item.Codigo == IdUniversidad){
+              this.url_servicio = item
+              return this.url_servicio
+            }
           }
-        }
-      }).then(()=>{
-        this.getTitulos().then(()=>{
-          console.log('ok')
-          this.loading= false
-        }).catch((err)=>{
-          if(err.status == 401){
-            console.log('Credencial Inválida')
-            localStorage.removeItem('token')
-            this.cargar_datos(IdUniversidad)
+          return this.url_servicio
+        }).then(()=>{
+          if (!this.url_servicio){
+            this.loading = false 
+            return Promise.reject({'mensaje':'La Universidad no se encuentra parametrizada'})
           }
+          this.getTitulos().then(()=>{
+            this.loading= false
+            this.mostrar_tabla = true 
+          }).catch((err)=>{
+            if(err.status == 401){
+              console.log('Credencial Inválida')
+              localStorage.removeItem('token')
+              this.cargar_datos(IdUniversidad)
+            }
+          })
+        }).catch((error)=>{
+          console.log(error)
         })
       })
     })
+  }
+  
+  getServicios(IdUniversidad:String){
+    const promesa = new Promise((resolve,reject)=>{
+      this.total_niveles = 0
+      this.servicios = this.adminService.getServicios(IdUniversidad)
+      if (!this.servicios || this.servicios.length == 0){reject()}
+      resolve()
+    })
+    return promesa
   }
 
   getTitulos(){
@@ -127,6 +148,7 @@ export class AdministracionComponent {
   }
 
   getToken(){
+    console.log(localStorage.getItem('token'))
     const promesa = new Promise((resolve,reject)=>{
       if (!localStorage.getItem('token')){
         this.adminService.getToken().subscribe(response=>{
@@ -151,17 +173,21 @@ export class AdministracionComponent {
       }
     })
     return promesa 
-}
+  }
 
-getUniversidad(){
-  const promesa = new Promise((resolve,reject)=>{
-    this.http.get("assets/config.json").subscribe((success) =>  {
-      this.url_servicios = JSON.parse(success['_body'])
-      resolve(this.url_servicios)
-    });
-  })
-  return promesa
-}
+  getUniversidad(){
+    const promesa = new Promise((resolve,reject)=>{
+      this.http.get("assets/config.json").subscribe((success) =>  {
+        this.url_servicios = JSON.parse(success['_body'])
+        resolve(this.url_servicios)
+      });
+    })
+    return promesa
+  }
 
-
+  ngOnChanges(){
+    if(this.universidad && this.universidad != "0"){
+      this.cargar_datos(this.universidad)
+    }
+  }
 }

@@ -9,6 +9,7 @@ import { AdministracionService } from "../shared/services/administracion.service
   providers:[AdministracionService]
 })
 export class AppComponent {
+  public rol:string 
   title = 'app';
     user = {
       name: 'Carlos',

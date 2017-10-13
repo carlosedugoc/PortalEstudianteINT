@@ -3,3 +3,23 @@
     margin-top: 30px;
     margin-bottom: 40px
 }
+
+/* tr {
+    width: 500px;
+    display: inline-table;
+    table-layout: fixed;
+    } */
+    /* .tabla{
+        height:500px;             
+        display: -moz-groupbox;
+        overflow-y: scroll;      
+        overflow-x: scroll;       
+        width: 100%;
+        position: absolute;
+    } */
+    
+    .tabla{
+        position: relative;
+        height:300px;
+        overflow-y: scroll;
+    }
