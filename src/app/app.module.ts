@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { AdministracionComponent } from './components/administracion/administracion.component';
 import { FiltroServiciosPipe } from './pipes/filtro-servicios.pipe';
 import { HttpModule } from "@angular/http";
+import { ListaServiciosComponent } from './components/administracion/lista-servicios.component';
 
 export function createTranslateLoader(http: HttpClient) {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -16,7 +17,8 @@ export function createTranslateLoader(http: HttpClient) {
   declarations: [
     AppComponent,
     AdministracionComponent,
-    FiltroServiciosPipe
+    FiltroServiciosPipe,
+    ListaServiciosComponent
   ],
   imports: [
     BrowserModule,

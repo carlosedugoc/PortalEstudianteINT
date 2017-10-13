@@ -6,6 +6,6 @@ export class Servicio {
         public tipo:number,
         public datos:Item[],
         public url:string,
-        public Habilitar:boolean
+        public habilitar:boolean
     ){}
 }

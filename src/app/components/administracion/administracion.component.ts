@@ -68,7 +68,7 @@ export class AdministracionComponent implements OnChanges {
             }
           })
         }).catch((error)=>{
-          console.log(error)
+          console.error(error)
         })
       })
     })
@@ -89,7 +89,6 @@ export class AdministracionComponent implements OnChanges {
       this.getModalidades().then(()=>{
         this.getNiveles().then(()=>{
           this.getEstados().then(()=>{
-            console.log('ok')
             this.loading= false
             resolve()
           }).catch((error)=>{
@@ -148,7 +147,6 @@ export class AdministracionComponent implements OnChanges {
   }
 
   getToken(){
-    console.log(localStorage.getItem('token'))
     const promesa = new Promise((resolve,reject)=>{
       if (!localStorage.getItem('token')){
         this.adminService.getToken().subscribe(response=>{

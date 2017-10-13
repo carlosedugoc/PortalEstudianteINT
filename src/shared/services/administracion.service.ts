@@ -12,52 +12,152 @@ export class AdministracionService {
     {
       id:1,
       nombre:"Actualización de datos",
-      tipo:1
+      tipo:1,
+      datos:[
+        {
+          id:1,
+          nombre:"",
+          tipo:1,
+          dato:true
+        }
+      ],
+      url:"",
+      habilitar:true
     },
     {
       id:2,
       nombre:"Agendamiento servicio especiales",
-      tipo:1
+      tipo:1,
+      datos:[
+        {
+          id:1,
+          nombre:"",
+          tipo:1,
+          dato:true
+        }
+      ],
+      url:"",
+      habilitar:true
     },
     {
       id:3,
       nombre:"Asistencia a clase",
-      tipo:1
+      tipo:1,
+      datos:[
+        {
+          id:1,
+          nombre:"",
+          tipo:1,
+          dato:true
+        }
+      ],
+      url:"",
+      habilitar:true
     },
     {
       id:4,
       nombre:"Biblioteca",
-      tipo:1
+      tipo:1,
+      datos:[
+        {
+          id:1,
+          nombre:"",
+          tipo:1,
+          dato:true
+        }
+      ],
+      url:"",
+      habilitar:true
     },
     {
       id:5,
       nombre:"Bloqueos (Retenciones)",
-      tipo:1
+      tipo:1,
+      datos:[
+        {
+          id:1,
+          nombre:"",
+          tipo:1,
+          dato:true
+        }
+      ],
+      url:"",
+      habilitar:true
     },
     {
       id:6,
       nombre:"Bolsa de empleo",
-      tipo:1
+      tipo:1,
+      datos:[
+        {
+          id:1,
+          nombre:"",
+          tipo:1,
+          dato:true
+        }
+      ],
+      url:"",
+      habilitar:true
     },
     {
       id:7,
       nombre:"Calendario Académico",
-      tipo:1
+      tipo:1,
+      datos:[
+        {
+          id:1,
+          nombre:"",
+          tipo:1,
+          dato:true
+        }
+      ],
+      url:"",
+      habilitar:true
     },
     {
       id:8,
       nombre:"Calificaciones Periodo en curso",
-      tipo:2
+      tipo:2,
+      datos:[
+        {
+          id:1,
+          nombre:"",
+          tipo:1,
+          dato:true
+        }
+      ],
+      url:"",
+      habilitar:true
     },
     {
       id:9,
       nombre:"Cancelación de asignaturas (Según reglamento estudiantil)",
-      tipo:2
+      tipo:2,
+      datos:[
+        {
+          id:1,
+          nombre:"",
+          tipo:1,
+          dato:true
+        }
+      ],
+      url:"",
+      habilitar:true
     },
     {
       id:10,
       nombre:"Caracterización estudiante solicitud de beca",
-      tipo:3
+      tipo:3,
+      datos:[
+        {
+          id:1,
+          nombre:"",
+          tipo:1,
+          dato:true
+        }
+      ],
+      url:"",
+      habilitar:true
     }
   ]
 

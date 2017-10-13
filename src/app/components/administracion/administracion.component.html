@@ -16,22 +16,21 @@
   </div>
 </div>
 
-
 <ul class="nav nav-pills nav-fill">
   <li class="nav-item">
     <a class="nav-link active" href="#t1" role="tab" data-toggle="tab">{{ 'Administracion.LabelConsultaAcademica' | translate }}</a>
-
   </li>
   <li class="nav-item">
     <a class="nav-link" href="#t2" role="tab" data-toggle="tab">{{ 'Administracion.LabelSolicitudFinanciera' | translate }}</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#" role="tab" data-toggle="tab">{{ 'Administracion.LabelSolicitudAcademica' | translate }}</a>
+    <a class="nav-link" href="#t3" role="tab" data-toggle="tab">{{ 'Administracion.LabelSolicitudAcademica' | translate }}</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link disabled" href="#" role="tab" data-toggle="tab">{{ 'Administracion.LabelPortales' | translate }}</a>
+      <a class="nav-link" href="#t4" role="tab" data-toggle="tab">{{ 'Administracion.LabelPortales' | translate }}</a>
   </li>
 </ul>
+
 <div *ngIf="loading">
   <br>
   <i class="fa fa-spinner fa-pulse fa-2x fa-fw"></i>
@@ -39,124 +38,43 @@
 
 </div>
 
-
-
 <div class="row">
     <div class="col-md-12">
         <div class="tab-content tabla" *ngIf="!loading && mostrar_tabla">
-            
-            
-            
-              <div role="tabpanel" class="tab-pane fade show active" id="t1">
-            
-            
-               <table class="table table-inverse">
-              <thead>
-                <tr>
-                  <td colspan="1" rowspan="2"  style="text-align: center; vertical-align: middle">{{ 'Administracion.LabelServicios' | translate }}</td>
-                  <td [attr.colspan]="total_modalidades" rowspan="1" style="text-align: center;">{{ 'Administracion.LabelModalidades' | translate }}</td>
-                  <td [attr.colspan]="total_niveles" rowspan="1" style="text-align: center;">{{ 'Administracion.LabelNiveles' | translate }}</td>
-                  <td [attr.colspan]="total_estados" rowspan="1" style="text-align: center;">{{ 'Administracion.LabelEstados' | translate }}</td>
-                  <td colspan="1" rowspan="2" style="text-align: center; vertical-align: middle">URL</td>
-                  <td colspan="1" rowspan="2" style="text-align: center; vertical-align: middle">{{ 'Administracion.LabelHabilidar' | translate }}</td>
-                </tr>
-                <tr>
-                <td *ngFor="let modalidad of modalidades">{{modalidad.description}}</td>
-                <td *ngFor="let nivel of niveles">{{nivel.description}}</td>
-                <td *ngFor="let estado of estados">{{estado.description}}</td>
-                </tr>
-              </thead>
-              <tbody id="registros">
-                <tr *ngFor="let servicio of servicios | filtroServicios:1">
-                  <th scope="row" >{{servicio.nombre}}</th>
-                  <td *ngFor="let modalidad of modalidades">
-                    <label class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input">
-                      <span class="custom-control-indicator"></span>
-                    </label>
-                  </td>
-                  <td *ngFor="let nivel of niveles">
-                    <label class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input">
-                      <span class="custom-control-indicator"></span>
-                    </label>
-                  </td>
-                  <td *ngFor="let estado of estados">
-                    <label class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input">
-                      <span class="custom-control-indicator"></span>
-                    </label>
-                  </td>
-                  <td>
-                    <div class="form-group">
-                      <input type="mail" class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
-                    </div>
-                  </td>
-                  <td>
-                      <input type="checkbox" checked data-toggle="toggle" data-on="Habilitado" data-off="Deshabilitado">
-                    <!-- <input type="range" class="form-control" name="" id="" aria-describedby="helpId" placeholder="" min="0" max="1"> -->
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-  
-              </div>
-            
-            
-            
-              <div role="tabpanel" class="tab-pane fade" id="t2">
-                     <table class="table table-inverse">
-                    <thead>
-                      <tr>
-                        <td colspan="1" rowspan="2"  style="text-align: center; vertical-align: middle">{{ 'Administracion.LabelServicios' | translate }}</td>
-                        <td [attr.colspan]="total_modalidades" rowspan="1" style="text-align: center;">{{ 'Administracion.LabelModalidades' | translate }}</td>
-                        <td [attr.colspan]="total_niveles" rowspan="1" style="text-align: center;">{{ 'Administracion.LabelNiveles' | translate }}</td>
-                        <td [attr.colspan]="total_estados" rowspan="1" style="text-align: center;">{{ 'Administracion.LabelEstados' | translate }}</td>
-                        <td colspan="1" rowspan="2" style="text-align: center; vertical-align: middle">URL</td>
-                        <td colspan="1" rowspan="2" style="text-align: center; vertical-align: middle">{{ 'Administracion.LabelHabilidar' | translate }}</td>
-                      </tr>
-                      <tr>
-                      <td *ngFor="let modalidad of modalidades">{{modalidad.description}}</td>
-                      <td *ngFor="let nivel of niveles">{{nivel.description}}</td>
-                      <td *ngFor="let estado of estados">{{estado.description}}</td>
-                      </tr>
-                    </thead>
-                    <tbody id="registros">
-                      <tr *ngFor="let servicio of servicios | filtroServicios:2">
-                        <th scope="row" >{{servicio.nombre}}</th>
-                        <td *ngFor="let modalidad of modalidades">
-                          <label class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input">
-                            <span class="custom-control-indicator"></span>
-                          </label>
-                        </td>
-                        <td *ngFor="let nivel of niveles">
-                          <label class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input">
-                            <span class="custom-control-indicator"></span>
-                          </label>
-                        </td>
-                        <td *ngFor="let estado of estados">
-                          <label class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input">
-                            <span class="custom-control-indicator"></span>
-                          </label>
-                        </td>
-                        <td>
-                          <div class="form-group">
-                            <input type="mail" class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
-                          </div>
-                        </td>
-                        <td>
-                            <input type="checkbox" checked data-toggle="toggle" data-on="Habilitado" data-off="Deshabilitado">
-                          <!-- <input type="range" class="form-control" name="" id="" aria-describedby="helpId" placeholder="" min="0" max="1"> -->
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
+
+          <div role="tabpanel" class="tab-pane fade show active" id="t1">
+              <app-lista-servicios [total_modalidades]= "total_modalidades"  [total_niveles] = "total_niveles"
+                    [total_estados] = "total_estados" [modalidades] = "modalidades"
+                    [estados] = "estados" [niveles] = "niveles"
+                    [servicios] = "servicios | filtroServicios:1">
+              </app-lista-servicios>
+          </div>
         
-                    </div>
-            </div>
+          <div role="tabpanel" class="tab-pane fade" id="t2">
+              <app-lista-servicios [total_modalidades]= "total_modalidades"  [total_niveles] = "total_niveles"
+                  [total_estados] = "total_estados" [modalidades] = "modalidades"
+                  [estados] = "estados" [niveles] = "niveles"
+                  [servicios] = "servicios | filtroServicios:2">
+              </app-lista-servicios>
+          </div>
+
+          <div role="tabpanel" class="tab-pane fade" id="t3">
+              <app-lista-servicios [total_modalidades]= "total_modalidades"  [total_niveles] = "total_niveles"
+                  [total_estados] = "total_estados" [modalidades] = "modalidades"
+                  [estados] = "estados" [niveles] = "niveles"
+                  [servicios] = "servicios | filtroServicios:3">
+              </app-lista-servicios>
+          </div>
+
+          <div role="tabpanel" class="tab-pane fade" id="t4">
+              <app-lista-servicios [total_modalidades]= "total_modalidades"  [total_niveles] = "total_niveles"
+                  [total_estados] = "total_estados" [modalidades] = "modalidades"
+                  [estados] = "estados" [niveles] = "niveles"
+                  [servicios] = "servicios | filtroServicios:4">
+              </app-lista-servicios>
+          </div>
+
+        </div>
     </div>
   </div>
 
