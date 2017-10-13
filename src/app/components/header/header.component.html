@@ -1,0 +1,86 @@
+    <section id="mainNav">
+        <div class="user">
+            <img src="./assets/img/user.png" alt="" class="imgProfile">
+            <div class="name">
+                <h3>Nombre </h3>
+                <a href="#" class="iconLogOut">
+      <i class="fa fa-sign-out" aria-hidden="true"></i>
+    </a>
+            </div>
+            <div class="carrer">
+                <div class="boxSelect">
+                    <select name="" id="input" class="form-control" required="required">
+                        <option value="">Administrador ILUMNO</option>
+                        <option value="">Administrador universidad</option>
+                    </select>
+                </div>
+                <!-- <p class="modalidad">Pregrado Virtual</p> -->
+            </div>
+        </div>
+        <nav class="menu" id="accordion">
+            <ul class="list-group panel">
+                <a class="seccionPadre collapsed" data-parent="#accordion" data-toggle="collapse" href="#collapse1" aria-expanded="false" aria-controls="collapse1">
+                    <li><i class="fa fa-home" aria-hidden="true"></i><span>PRINCIPAL</span></li>
+                </a>
+                <ul class="collapse" id="collapse1">
+                    <a href="">
+                        <li>item 1</li>
+                    </a>
+                    <a href="">
+                        <li>item 2</li>
+                    </a>
+                </ul>
+                <a class="seccionPadre collapsed" data-parent="#accordion" data-toggle="collapse" href="#collapse2" aria-expanded="false" aria-controls="collapse2">
+                    <li><i class="fa fa-cog" aria-hidden="true"></i><span>ADMINISTRACIÓN</span></li>
+                </a>
+                <ul class="collapse in" id="collapse2">
+                    <a data-toggle="modal" href="#modal-id" class="active">
+                        <li><span>Configuración de servicios</span></li>
+                    </a>
+                    <a href="">
+                        <li><span>Configuración de Universidades</span></li>
+                    </a>
+                    <a href="">
+                        <li><span>Actualización de datos</span></li>
+                    </a>
+                </ul>
+            </ul>
+        </nav>
+    </section>
+    <section id="content">
+        <header>
+            <div class="container-fluid">
+                <div class="row mainHead">
+                    <div class="col-sm-4">
+                        <a class="navicon-button rarr">
+                            <div class="navicon"></div>
+                        </a>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="logoU">
+                            <img src="./assets/img/logo_ilumno_header.png" alt="">
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="optionsHeader">
+                            <ul class="list-inline">
+                                <li>
+                                    <div class="boxSelect">
+                                        <select name="" id="input" class="form-control" required="required" (change)="switchLanguage($event.target.value)">
+                                            <option value="es">ES</option>
+                                            <option value="en">EN</option>
+                                            <option value="pt">PT</option>
+                                        </select>
+                                    </div>
+                                </li>
+                                <li><a href="#"><i class="fa fa-bell-o" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fa fa-envelope-o" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fa fa-sign-out" aria-hidden="true"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        </section>

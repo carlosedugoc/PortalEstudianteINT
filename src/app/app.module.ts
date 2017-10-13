@@ -9,6 +9,8 @@ import { FiltroServiciosPipe } from './pipes/filtro-servicios.pipe';
 import { HttpModule } from "@angular/http";
 import { ListaServiciosComponent } from './components/administracion/lista-servicios.component';
 import { FiltroTipoServicioPipe } from './pipes/filtro-tipo-servicio.pipe';
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 export function createTranslateLoader(http: HttpClient) {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -20,7 +22,9 @@ export function createTranslateLoader(http: HttpClient) {
     AdministracionComponent,
     FiltroServiciosPipe,
     ListaServiciosComponent,
-    FiltroTipoServicioPipe
+    FiltroTipoServicioPipe,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

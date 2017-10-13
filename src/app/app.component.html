@@ -12,19 +12,8 @@
   Startpage.TranslationSections 
 </div> -->
 
-<div class="container main-container">
-    <div class="alert alert-dark" role="alert">
-  <div class="row">
-    <div class="col-md-6">
-      <div class="form-group">
-        <label for="">Idioma</label>
-        <select class="form-control" (change)="switchLanguage($event.target.value)">
-            <option value="es">Español</option>
-            <option value="en" >Ingles</option>
-            <option value="pt" >Portugues</option>
-        </select>
-      </div>
-    </div>
+
+<!--
     <div class="col-md-6">
     <div class="form-group">
         <label for="">Usuario</label>
@@ -36,6 +25,12 @@
       </div>
     </div>
   </div>
+    </div> -->
+    <div class="container-fluid">
+      <div class="row">
+          <app-header></app-header>
+          <app-administracion [universidad]="universidad" ></app-administracion>
+          <app-footer></app-footer>
+      </div>
     </div>
-    <app-administracion [universidad]="universidad" ></app-administracion>
-</div>
+

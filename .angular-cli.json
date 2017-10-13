@@ -20,9 +20,15 @@
       "prefix": "app",
       "styles": [
         "styles.css",
-        "assets/font-awesome/css/font-awesome.min.css"
+        "assets/font-awesome/css/font-awesome.min.css",
+        "assets/css/bootstrap.min.css",
+        "assets/css/estilos.css"
       ],
-      "scripts": [],
+      "scripts": [
+        "assets/js/jquery.min.js",
+        "assets/js/bootstrap.min.js",
+        "assets/js/main.js"
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",

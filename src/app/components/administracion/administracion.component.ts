@@ -68,6 +68,8 @@ export class AdministracionComponent implements OnChanges {
             }
           })
         }).catch((error)=>{
+          this.loading= false
+          this.mostrar_tabla = false 
           console.error(error)
         })
       })

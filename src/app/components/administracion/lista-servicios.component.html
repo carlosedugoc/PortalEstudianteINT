@@ -1,50 +1,81 @@
 
-
-<table class="table table-inverse">
-    <thead>
-      <tr>
-        <td colspan="1" rowspan="2"  style="text-align: center; vertical-align: middle">{{ 'Administracion.LabelServicios' | translate }}</td>
-        <td [attr.colspan]="total_modalidades" rowspan="1" style="text-align: center;">{{ 'Administracion.LabelModalidades' | translate }}</td>
-        <td [attr.colspan]="total_niveles" rowspan="1" style="text-align: center;">{{ 'Administracion.LabelNiveles' | translate }}</td>
-        <td [attr.colspan]="total_estados" rowspan="1" style="text-align: center;">{{ 'Administracion.LabelEstados' | translate }}</td>
-        <td colspan="1" rowspan="2" style="text-align: center; vertical-align: middle">URL</td>
-        <td colspan="1" rowspan="2" style="text-align: center; vertical-align: middle">{{ 'Administracion.LabelHabilidar' | translate }}</td>
-      </tr>
-      <tr>
-      <td *ngFor="let modalidad of modalidades">{{modalidad.description}}</td>
-      <td *ngFor="let nivel of niveles">{{nivel.description}}</td>
-      <td *ngFor="let estado of estados">{{estado.description}}</td>
-      </tr>
-    </thead>
-    <tbody id="registros">
-      <tr *ngFor="let servicio of servicios">
-        <th scope="row" >{{servicio.nombre}}</th>
-        <td *ngFor="let modalidad of modalidades">
-          <label class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input">
-            <span class="custom-control-indicator"></span>
-          </label>
-        </td>
-        <td *ngFor="let nivel of niveles">
-          <label class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input">
-            <span class="custom-control-indicator"></span>
-          </label>
-        </td>
-        <td *ngFor="let estado of estados">
-          <label class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input">
-            <span class="custom-control-indicator"></span>
-          </label>
-        </td>
-        <td>
-          <div class="form-group">
-            <input type="mail" class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
-          </div>
-        </td>
-        <td>
-            <input type="checkbox" checked data-toggle="toggle" data-on="Habilitado" data-off="Deshabilitado">
-        </td>
-      </tr>
-    </tbody>
-  </table>
+<div class="row">
+    <div class="col-xs-12">
+        <div id="no-more-tables" class="">
+            <div class="table-responsive">
+                <table class="table-bordered table-striped table-condensed">
+                    <thead class="">
+                        <tr class="headBold">
+                          <th colspan="1" rowspan="2">{{ 'Administracion.LabelServicios' | translate }}</th>
+                          <th [attr.colspan]="total_modalidades">{{ 'Administracion.LabelModalidades' | translate }}</th>
+                          <th [attr.colspan]="total_niveles">{{ 'Administracion.LabelNiveles' | translate }}</th>
+                          <th [attr.colspan]="total_estados">{{ 'Administracion.LabelEstados' | translate }}</th>
+                          <th colspan="1" rowspan="2" class="boxInput">URL</th>
+                          <th colspan="1" rowspan="2" class="boxSwitch">{{ 'Administracion.LabelHabilidar' | translate }}</th>
+                        </tr>
+                        <tr>
+                          <th class="boxCheckbox" *ngFor="let modalidad of modalidades">{{modalidad.description}}</th>
+                          <th class="boxCheckbox" *ngFor="let nivel of niveles">{{nivel.description}}</th>
+                          <th class="boxCheckbox" *ngFor="let estado of estados">{{estado.description}}</th>
+                        </tr>
+                    </thead>
+                  
+                    <tbody>
+                        <tr *ngFor="let servicio of servicios">
+                            <td data-title="Servicio" class="boxFirstInput">
+                                <div class="wrapService">
+                                    <div class="txt">
+                                        {{servicio.nombre}}
+                                    </div>
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fa fa-check-square-o" aria-hidden="true"></i> <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="#">Seleccionar todos</a></li>
+                                            <li><a href="#">Deseleccionar todos</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </td>
+                            <td *ngFor="let item of servicio.datos" class="boxCheckbox">
+                                <label class="control control--checkbox">
+                                    <input type="checkbox" checked="checked" data-title="{{item.nombre_item}}"/>
+                                    <div class="control__indicator"></div>
+                                </label>
+                            </td>
+                            <!-- <td *ngFor="let modalidad of modalidades" data-title="Mod. Presencial" class="boxCheckbox">
+                                <label class="control control--checkbox">
+                                    <input type="checkbox" checked="checked" />
+                                    <div class="control__indicator"></div>
+                                </label>
+                            </td> -->
+                                <!-- <td *ngFor="let nivel of niveles" data-title="Mod. Virtual" class="boxCheckbox">
+                                    <label class="control control--checkbox">
+                                        <input type="checkbox" checked="checked" />
+                                        <div class="control__indicator"></div>
+                                    </label>
+                                </td>
+                                <td *ngFor="let estado of estados" data-title="Niv. Pregrado" class="boxCheckbox">
+                                    <label class="control control--checkbox">
+                                        <input type="checkbox" checked="checked" />
+                                        <div class="control__indicator"></div>
+                                    </label>
+                                </td> -->
+                            <td data-title="URL" class="boxInput">
+                                <input type="text" class="form-control" value="http://poli.edu.co">
+                            </td>
+                            <td data-title="Habilitar / Deshabilitar" class="boxSwitch">
+                                <div class="card">
+                                    <label>
+                                        <input type="checkbox" checked="checked" /><span class="switch"></span><span class="toggle">    </span>
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
