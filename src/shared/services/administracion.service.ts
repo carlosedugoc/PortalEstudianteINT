@@ -16,8 +16,10 @@ export class AdministracionService {
       datos:[
         {
           id:1,
-          nombre:"",
-          tipo:1,
+          nombre_Item:"",
+          id_item:1,
+          nombre_tipo:"Modalidad Académica",
+          id_tipo:1,
           dato:true
         }
       ],
@@ -31,8 +33,10 @@ export class AdministracionService {
       datos:[
         {
           id:1,
-          nombre:"",
-          tipo:1,
+          nombre_Item:"",
+          id_item:1,
+          nombre_tipo:"Modalidad Académica",
+          id_tipo:1,
           dato:true
         }
       ],
@@ -46,8 +50,10 @@ export class AdministracionService {
       datos:[
         {
           id:1,
-          nombre:"",
-          tipo:1,
+          nombre_Item:"",
+          id_item:1,
+          nombre_tipo:"Modalidad Académica",
+          id_tipo:1,
           dato:true
         }
       ],
@@ -61,8 +67,10 @@ export class AdministracionService {
       datos:[
         {
           id:1,
-          nombre:"",
-          tipo:1,
+          nombre_Item:"",
+          id_item:1,
+          nombre_tipo:"Modalidad Académica",
+          id_tipo:1,
           dato:true
         }
       ],
@@ -76,8 +84,10 @@ export class AdministracionService {
       datos:[
         {
           id:1,
-          nombre:"",
-          tipo:1,
+          nombre_Item:"",
+          id_item:1,
+          nombre_tipo:"Modalidad Académica",
+          id_tipo:1,
           dato:true
         }
       ],
@@ -91,8 +101,10 @@ export class AdministracionService {
       datos:[
         {
           id:1,
-          nombre:"",
-          tipo:1,
+          nombre_Item:"",
+          id_item:1,
+          nombre_tipo:"Nivel Académico",
+          id_tipo:2,
           dato:true
         }
       ],
@@ -106,8 +118,10 @@ export class AdministracionService {
       datos:[
         {
           id:1,
-          nombre:"",
-          tipo:1,
+          nombre_Item:"",
+          id_item:1,
+          nombre_tipo:"Nivel Académico",
+          id_tipo:2,
           dato:true
         }
       ],
@@ -121,8 +135,10 @@ export class AdministracionService {
       datos:[
         {
           id:1,
-          nombre:"",
-          tipo:1,
+          nombre_Item:"",
+          id_item:1,
+          nombre_tipo:"Nivel Académico",
+          id_tipo:2,
           dato:true
         }
       ],
@@ -136,8 +152,10 @@ export class AdministracionService {
       datos:[
         {
           id:1,
-          nombre:"",
-          tipo:1,
+          nombre_Item:"",
+          id_item:1,
+          nombre_tipo:"Tipo de Usuario",
+          id_tipo:3,
           dato:true
         }
       ],
@@ -151,8 +169,10 @@ export class AdministracionService {
       datos:[
         {
           id:1,
-          nombre:"",
-          tipo:1,
+          nombre_Item:"",
+          id_item:1,
+          nombre_tipo:"Tipo de Usuario",
+          id_tipo:3,
           dato:true
         }
       ],
