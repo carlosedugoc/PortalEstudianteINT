@@ -40,7 +40,7 @@
                             </td>
                             <td *ngFor="let item of servicio.datos" class="boxCheckbox">
                                 <label class="control control--checkbox">
-                                    <input type="checkbox" checked="checked" data-title="{{item.nombre_item}}"/>
+                                    <input type="checkbox" checked="checked" data-title="{{item.nombre_item}}" (click)="updateItem()" />
                                     <div class="control__indicator"></div>
                                 </label>
                             </td>

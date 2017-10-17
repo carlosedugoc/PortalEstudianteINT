@@ -13,23 +13,25 @@
 </div> -->
 
 
-<!--
+
     <div class="col-md-6">
     <div class="form-group">
         <label for="">Usuario</label>
-          <select class="form-control" (change)="universidad=$event.target.value" name="usuarios" >
-            <option value="0">Administrador Ilumno</option>
-            <option value="1" >Administrador UniAndina</option>
-            <option value="2" >Administrador Politectico</option>
+          <select class="form-control" (change)="rol=$event.target.value" name="usuarios" >
+            <option value="">Administrador Ilumno</option>
+            <option value="AA" >Administrador UniAndina</option>
+            <option value="Poli" >Administrador Politectico</option>
         </select>
       </div>
     </div>
-  </div>
-    </div> -->
+
+
+    <a name="" id="" class="btn btn-success" href="#" role="button" (click)="cambiar()" >cambiar</a>
     <div class="container-fluid">
       <div class="row">
           <app-header></app-header>
-          <app-administracion [universidad]="universidad" ></app-administracion>
+          <!-- <router-outlet></router-outlet> -->
+          <app-administracion [universidad]="rol" ></app-administracion>
           <app-footer></app-footer>
       </div>
     </div>

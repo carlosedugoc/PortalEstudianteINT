@@ -23,4 +23,8 @@ export class ListaServiciosComponent implements OnInit {
   ngOnInit() {
   }
 
+  updateItem(){
+    
+  }
+
 }

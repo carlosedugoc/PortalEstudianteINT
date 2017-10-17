@@ -4,6 +4,7 @@ import { Servicio } from "../../../shared/models/servicio";
 import { Nivel } from "../../../shared/models/nivel";
 import { Modalidad } from "../../../shared/models/modalidad";
 import { Estados } from "../../../shared/models/estados";
+import { Item } from "../../../shared/models/item";
 import { UrlServicios } from "../../../shared/models/url-servicios";
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 
@@ -35,14 +36,14 @@ export class AdministracionComponent implements OnChanges {
                 this.mostrar_tabla = false 
   }
 
-  cargar_datos(IdUniversidad:String){
+  cargar_datos(IdUniversidad:string){
     this.url_servicio = undefined
     if (IdUniversidad == "0"){
       this.mostrar_tabla = false 
       return
     }
     this.loading = true
-    this.getServicios(IdUniversidad).then(()=>{
+    // this.getServicios(IdUniversidad).then(()=>{
       this.getToken().then(()=>{
         this.getUniversidad().then(()=>{
           for(let item of this.url_servicios){
@@ -57,7 +58,7 @@ export class AdministracionComponent implements OnChanges {
             this.loading = false 
             return Promise.reject({'mensaje':'La Universidad no se encuentra parametrizada'})
           }
-          this.getTitulos().then(()=>{
+          this.getTitulos(IdUniversidad).then(()=>{
             this.loading= false
             this.mostrar_tabla = true 
           }).catch((err)=>{
@@ -65,6 +66,8 @@ export class AdministracionComponent implements OnChanges {
               console.log('Credencial Inválida')
               localStorage.removeItem('token')
               this.cargar_datos(IdUniversidad)
+            }else{
+              console.error('Se ha producido un error de conexión')
             }
           })
         }).catch((error)=>{
@@ -73,7 +76,7 @@ export class AdministracionComponent implements OnChanges {
           console.error(error)
         })
       })
-    })
+    // })
   }
   
   getServicios(IdUniversidad:String){
@@ -86,11 +89,12 @@ export class AdministracionComponent implements OnChanges {
     return promesa
   }
 
-  getTitulos(){
+  getTitulos(IdUniversidad:string){
     const promesa = new Promise((resolve,reject)=>{
       this.getModalidades().then(()=>{
         this.getNiveles().then(()=>{
           this.getEstados().then(()=>{
+            this.showData(IdUniversidad)
             this.loading= false
             resolve()
           }).catch((error)=>{
@@ -103,6 +107,7 @@ export class AdministracionComponent implements OnChanges {
         reject(error)
       })
     })
+    
     return promesa
   }
 
@@ -190,4 +195,98 @@ export class AdministracionComponent implements OnChanges {
       this.cargar_datos(this.universidad)
     }
   }
+
+ //public faltantes:Item[]
+ public faltantes:any[] 
+
+  showData(IdUniversidad){
+    this.faltantes = []  
+    var itemsOrdenados:Item[]
+    this.servicios = this.adminService.getServicios(IdUniversidad)
+    if (this.modalidades && this.modalidades.length > 0){
+      for (var idx = 0; idx < this.servicios.length; idx++) {
+        itemsOrdenados = []
+        for(let modalidad of this.modalidades){
+            let items:Item[]
+            items = this.servicios[idx].datos
+            for (var index = 0; index < items.length; index++) {
+              if (modalidad.description = items[index].nombre_item){
+                itemsOrdenados.push(items[index])
+                break
+              }
+//              this.faltantes.push(items[index])
+              //toca crear un objeto para guardar las modalidades faltantes
+              this.faltantes.push({
+                id_tipo:1,
+                nombre_tipo:"Modalidad",
+                nombre_item:modalidad.description,
+                id_item:modalidad.modalityId,
+                id_universidad:IdUniversidad
+              })
+            } 
+          }
+          this.servicios[idx].datos = itemsOrdenados
+        }
+      }
+
+      if (this.niveles && this.niveles.length > 0){
+        itemsOrdenados = []
+        for (var idx = 0; idx < this.servicios.length; idx++) {
+          for(let nivel of this.niveles){
+              let items:Item[]
+              items = this.servicios[idx].datos
+              for (var index = 0; index < items.length; index++) {
+                if (nivel.description = items[index].nombre_item){
+                  itemsOrdenados.push(items[index])
+                  break
+                }
+                //this.faltantes.push(items[index])
+                this.faltantes.push({
+                  id_tipo:2,
+                  nombre_tipo:"Nivel",
+                  item:nivel.description,
+                  id_item:nivel.levelId,
+                  id_universidad:IdUniversidad
+                })
+              } 
+            }
+            this.servicios[idx].datos = itemsOrdenados
+          }
+        }
+
+      if (this.estados && this.estados.length > 0){
+        for (var idx = 0; idx < this.servicios.length; idx++) {
+          itemsOrdenados = []
+          for(let estado of this.estados){
+              let items:Item[]
+              items = this.servicios[idx].datos
+              for (var index = 0; index < items.length; index++) {
+                if (estado.description = items[index].nombre_item){
+                  itemsOrdenados.push(items[index])
+                  break
+                }
+                //this.faltantes.push(items[index])
+                this.faltantes.push({
+                  id_tipo:2,
+                  nombre_tipo:"Estado",
+                  item:estado.description,
+                  id_item:estado.statusId,
+                  id_universidad:IdUniversidad
+                })
+              } 
+            }
+            this.servicios[idx].datos = itemsOrdenados
+          }
+        }
+
+        if (this.faltantes.length>0) {
+          console.log('faltantes',this.faltantes)
+          this.saveItem()
+        }
+  }
+
+  saveItem(){
+    //this.showData()
+  }
+
 }
