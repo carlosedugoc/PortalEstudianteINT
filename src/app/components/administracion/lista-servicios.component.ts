@@ -9,8 +9,9 @@ import { Servicio } from "../../../shared/models/servicio";
   templateUrl: './lista-servicios.component.html',
   styleUrls: ['./lista-servicios.component.css']
 })
-export class ListaServiciosComponent implements OnInit {
-  @Input('total_modalidades') total_modalidades:number
+export class ListaServiciosComponent implements OnInit, OnChanges {
+
+  @Input('total_modalidades') total_modalidades: number
   @Input('total_niveles') total_niveles:number
   @Input('total_estados') total_estados:number
   @Input('modalidades') modalidades:Modalidad[]
@@ -20,8 +21,15 @@ export class ListaServiciosComponent implements OnInit {
   
   constructor() { }
 
-  ngOnInit() {
+  ngOnChanges(){
+    console.log('tabla',this.modalidades)
   }
+
+  ngOnInit() {
+    
+  }
+
+  
 
   updateItem(){
     

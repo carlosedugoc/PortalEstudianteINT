@@ -13,11 +13,11 @@
             </section>
             <section id="mainContent">
                 <div class="module">
-                    <div class="headModule">
+                    <div class="headModule" *ngIf="!universidad || universidad == ''" >
                         <h1>Seleccione una Universidad y configure los servicios</h1>
                     </div>
                     <div class="bodyModule">
-                        <div class="row boxCombo">
+                        <div class="row boxCombo" *ngIf="!universidad || universidad == ''" >
                             <div class="col-sm-6 col-md-4">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">{{ 'Administracion.LabelUniversidad' | translate }}</label>
@@ -53,8 +53,8 @@
                                 <div class="tab-content" *ngIf="!loading && mostrar_tabla">
                                     <div role="tabpanel" class="tab-pane fade in active" id="tab1">
                                         <app-lista-servicios [total_modalidades]= "total_modalidades"  [total_niveles] = "total_niveles"
-                                              [total_estados] = "total_estados" [modalidades] = "modalidades"
-                                              [estados] = "estados" [niveles] = "niveles"
+                                              [total_estados] = "total_estados" [modalidades] = "modality"
+                                              [estados] = "status" [niveles] = "levels"
                                               [servicios] = "servicios | filtroServicios:1">
                                         </app-lista-servicios>
                                     </div>

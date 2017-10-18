@@ -9,9 +9,10 @@
             </div>
             <div class="carrer">
                 <div class="boxSelect">
-                    <select name="" id="input" class="form-control" required="required">
+                    <select name="" id="input" class="form-control" required="required" (change)="cambiar($event.target.value)" name="usuarios">
                         <option value="">Administrador ILUMNO</option>
-                        <option value="">Administrador universidad</option>
+                        <option value="AA">Administrador Area Andina</option>
+                        <option value="Poli">Administrador Politécnico</option>
                     </select>
                 </div>
                 <!-- <p class="modalidad">Pregrado Virtual</p> -->
@@ -37,12 +38,12 @@
                     <a data-toggle="modal" href="#modal-id" class="active">
                         <li><span>Configuración de servicios</span></li>
                     </a>
-                    <a href="">
+                    <a href="" *ngIf="!universidad ">
                         <li><span>Configuración de Universidades</span></li>
                     </a>
-                    <a href="">
+                    <!-- <a href="">
                         <li><span>Actualización de datos</span></li>
-                    </a>
+                    </a> -->
                 </ul>
             </ul>
         </nav>
@@ -58,7 +59,7 @@
                     </div>
                     <div class="col-sm-4">
                         <div class="logoU">
-                            <img src="./assets/img/logo_ilumno_header.png" alt="">
+                            <img src="./assets/img/logo_header.png" id="logo" alt="">
                         </div>
                     </div>
                     <div class="col-sm-4">

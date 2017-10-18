@@ -12,6 +12,7 @@ import { FiltroTipoServicioPipe } from './pipes/filtro-tipo-servicio.pipe';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { appRouting } from "./app.routes";
+import { APP_BASE_HREF } from '@angular/common';
 
 export function createTranslateLoader(http: HttpClient) {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -31,7 +32,7 @@ export function createTranslateLoader(http: HttpClient) {
     BrowserModule,
     HttpClientModule,
     HttpModule,
-    // appRouting,
+    appRouting,
     TranslateModule.forRoot({
         loader: {
             provide: TranslateLoader,
@@ -40,7 +41,7 @@ export function createTranslateLoader(http: HttpClient) {
         }
     })
   ],
-  providers: [],
+  providers: [{provide: APP_BASE_HREF, useValue : '/' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
