@@ -1,16 +1,28 @@
-    [
-        {
-            "Universidad":"Fundación Universitaria del Área Andina",
-            "Codigo":"1",
-            "ServicioModalidad":"https://apis.qailumno.com/sis/fuaa/v1/api/modalities",
-            "ServicioNivel":"https://apis.qailumno.com/sis/fuaa/v1/api/academicLevels",
-            "ServicioEstado":"https://apis.qailumno.com/sis/fuaa/v1/sis/status"
-        },
-        {
-            "Universidad":"Politécnico Gran Colombiano",
-            "Codigo":"2",
-            "ServicioModalidad":"https://apis.qailumno.com/sis/poli/v1/api/modalities",
-            "ServicioNivel":"https://apis.qailumno.com/sis/poli/v1/api/academicLevels",
-            "ServicioEstado":"https://apis.qailumno.com/sis/poli/v1/sis/status"
-        }
-    ]
+{ 
+    "universidades": 
+        [
+            {
+                "Universidad":"Fundación Universitaria del Área Andina",
+                "Codigo":"1",
+                "ServicioModalidad":"https://apis.qailumno.com/sis/fuaa/v1/api/modalities",
+                "ServicioNivel":"https://apis.qailumno.com/sis/fuaa/v1/api/academicLevels",
+                "ServicioEstado":"https://apis.qailumno.com/sis/fuaa/v1/sis/status"
+            },
+            {
+                "Universidad":"Politécnico Gran Colombiano",
+                "Codigo":"2",
+                "ServicioModalidad":"https://apis.qailumno.com/sis/poli/v1/api/modalities",
+                "ServicioNivel":"https://apis.qailumno.com/sis/poli/v1/api/academicLevels",
+                "ServicioEstado":"https://apis.qailumno.com/sis/poli/v1/sis/status"
+            }
+        ],
+    "servicios":{
+        "UrlGetServicios":"http://10.75.8.109/PEServices/Api/Servicios/Universidad/",
+        "UrlGetUniversidades":"http://10.75.8.109/PEServices/Api/Universidades/",
+        "UrlUpdateServicios":"http://10.75.8.109/PEServices/api/ItemSerUni/",
+        "UrlAddServicios":"http://10.75.8.109/PEServices/Api/Servicios/Universidad/",
+        "UrlGetIdioma":"http://10.75.8.109/PEServices/Api/Servicios/Universidad/",
+        "UrlUpdateIdioma":"http://10.75.8.109/PEServices/Api/Servicios/Universidad/"
+    }
+}
+

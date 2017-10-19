@@ -1,4 +1,3 @@
-{{estados | json}}
 <div class="row">
     <div class="col-xs-12">
         <div id="no-more-tables" class="">
@@ -8,15 +7,16 @@
                         <tr class="headBold">
                           <th colspan="1" rowspan="2">{{ 'Administracion.LabelServicios' | translate }}</th>
                           <th [attr.colspan]="total_modalidades">{{ 'Administracion.LabelModalidades' | translate }}</th>
-                          <th [attr.colspan]="total_niveles">{{ 'Administracion.LabelNiveles' | translate }}</th>
+                          <th [attr.colspan]="total_niveles">{{total_niveles}} {{ 'Administracion.LabelNiveles' | translate }}</th>
                           <th [attr.colspan]="total_estados">{{ 'Administracion.LabelEstados' | translate }}</th>
                           <th colspan="1" rowspan="2" class="boxInput">URL</th>
                           <th colspan="1" rowspan="2" class="boxSwitch">{{ 'Administracion.LabelHabilidar' | translate }}</th>
                         </tr>
                         <tr>
-                          <th class="boxCheckbox" *ngFor="let modalidad of modalidades">{{modalidad.description}}</th>
+                          <!-- <th class="boxCheckbox" *ngFor="let modalidad of modalidades">{{modalidad.description}}</th>
                           <th class="boxCheckbox" *ngFor="let nivel of niveles">{{nivel.description}}</th>
-                          <th class="boxCheckbox" *ngFor="let estado of estados">{{estado.description}}</th>
+                          <th class="boxCheckbox" *ngFor="let estado of estados">{{estado.description}}</th> -->
+                          <th class="boxCheckbox" *ngFor="let tipo of tipos">{{tipo.description}}</th>
                         </tr>
                     </thead>
                   
@@ -40,28 +40,10 @@
                             </td>
                             <td *ngFor="let item of servicio.datos" class="boxCheckbox">
                                 <label class="control control--checkbox">
-                                    <input type="checkbox" checked="checked" data-title="{{item.nombre_item}}" (click)="updateItem()" />
+                                    <input type="checkbox" [checked]="item.dato" (change)="updateItem(item.id,!item.dato)" />
                                     <div class="control__indicator"></div>
                                 </label>
                             </td>
-                            <!-- <td *ngFor="let modalidad of modalidades" data-title="Mod. Presencial" class="boxCheckbox">
-                                <label class="control control--checkbox">
-                                    <input type="checkbox" checked="checked" />
-                                    <div class="control__indicator"></div>
-                                </label>
-                            </td> -->
-                                <!-- <td *ngFor="let nivel of niveles" data-title="Mod. Virtual" class="boxCheckbox">
-                                    <label class="control control--checkbox">
-                                        <input type="checkbox" checked="checked" />
-                                        <div class="control__indicator"></div>
-                                    </label>
-                                </td>
-                                <td *ngFor="let estado of estados" data-title="Niv. Pregrado" class="boxCheckbox">
-                                    <label class="control control--checkbox">
-                                        <input type="checkbox" checked="checked" />
-                                        <div class="control__indicator"></div>
-                                    </label>
-                                </td> -->
                             <td data-title="URL" class="boxInput">
                                 <input type="text" class="form-control" value="http://poli.edu.co">
                             </td>

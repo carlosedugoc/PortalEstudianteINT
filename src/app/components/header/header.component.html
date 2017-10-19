@@ -2,7 +2,7 @@
         <div class="user">
             <img src="./assets/img/user.png" alt="" class="imgProfile">
             <div class="name">
-                <h3>Nombre </h3>
+                <h3>{{ 'Header.LabelNombre' | translate }}</h3>
                 <a href="#" class="iconLogOut">
       <i class="fa fa-sign-out" aria-hidden="true"></i>
     </a>
@@ -21,7 +21,7 @@
         <nav class="menu" id="accordion">
             <ul class="list-group panel">
                 <a class="seccionPadre collapsed" data-parent="#accordion" data-toggle="collapse" href="#collapse1" aria-expanded="false" aria-controls="collapse1">
-                    <li><i class="fa fa-home" aria-hidden="true"></i><span>PRINCIPAL</span></li>
+                    <li><i class="fa fa-home" aria-hidden="true"></i><span>{{ 'Header.LabelPrincipal' | translate }}</span></li>
                 </a>
                 <ul class="collapse" id="collapse1">
                     <a href="">
@@ -32,14 +32,14 @@
                     </a>
                 </ul>
                 <a class="seccionPadre collapsed" data-parent="#accordion" data-toggle="collapse" href="#collapse2" aria-expanded="false" aria-controls="collapse2">
-                    <li><i class="fa fa-cog" aria-hidden="true"></i><span>ADMINISTRACIÓN</span></li>
+                    <li><i class="fa fa-cog" aria-hidden="true"></i><span>{{ 'Header.LabelAdministracion' | translate }}</span></li>
                 </a>
                 <ul class="collapse in" id="collapse2">
                     <a data-toggle="modal" href="#modal-id" class="active">
-                        <li><span>Configuración de servicios</span></li>
+                        <li><span>{{ 'Header.LabelConfiguracionServicios' | translate }}</span></li>
                     </a>
                     <a href="" *ngIf="!universidad ">
-                        <li><span>Configuración de Universidades</span></li>
+                        <li><span>{{ 'Header.LabelConfiguracionUniversidades' | translate }}</span></li>
                     </a>
                     <!-- <a href="">
                         <li><span>Actualización de datos</span></li>

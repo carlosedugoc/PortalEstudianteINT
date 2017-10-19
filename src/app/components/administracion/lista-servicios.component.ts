@@ -1,38 +1,30 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
-import { Nivel } from "../../../shared/models/nivel";
-import { Modalidad } from "../../../shared/models/modalidad";
-import { Estados } from "../../../shared/models/estados";
 import { Servicio } from "../../../shared/models/servicio";
+import { AdministracionService } from "../../../shared/services/administracion.service";
 
 @Component({
   selector: 'app-lista-servicios',
-  templateUrl: './lista-servicios.component.html',
-  styleUrls: ['./lista-servicios.component.css']
+  templateUrl: './lista-servicios.component.html'
 })
-export class ListaServiciosComponent implements OnInit, OnChanges {
+export class ListaServiciosComponent {
 
   @Input('total_modalidades') total_modalidades: number
   @Input('total_niveles') total_niveles:number
   @Input('total_estados') total_estados:number
-  @Input('modalidades') modalidades:Modalidad[]
-  @Input('estados') estados:Estados[]
-  @Input('niveles') niveles:Nivel[]
   @Input('servicios') servicios:Servicio[]
+  @Input('tipos') tipos:any[]
   
-  constructor() { }
+  constructor(private adminService:AdministracionService) { }
 
-  ngOnChanges(){
-    console.log('tabla',this.modalidades)
-  }
+  updateItem(id:number,estado:boolean){
+    var servicios:any
+    servicios = localStorage.getItem('servicios')
+    console.log(JSON.parse(servicios).UrlUpdateServicios)
 
-  ngOnInit() {
-    
-  }
-
-  
-
-  updateItem(){
-    
+    this.adminService.actualizaItem({id:id,estado:estado},JSON.parse(servicios).UrlUpdateServicios).subscribe(data =>{
+      
+    })
+    // console.log('evento',event, 'item',estado)
   }
 
 }

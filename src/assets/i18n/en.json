@@ -1,12 +1,4 @@
 {
-    "Title": "Translation example",
-    "Intro": "Hello I am {{name}}, I am {{age}} years old.",
-    "Startpage": {
-        "TranslationSections": "Hello World"
-    },
-     "Aboutpage": {
-        "TranslationSections": "We are letsboot"
-    },
     "Administracion":{
         "LabelServicios":"Services",
         "LabelModalidades":"Academic Modality",
@@ -18,5 +10,12 @@
         "LabelSolicitudAcademica":"Academic Request",
         "LabelPortales":"Portals",
         "LabelUniversidad":"University"
+    },
+    "Header":{
+        "LabelPrincipal":"Main",
+        "LabelAdministracion":"ADMINISTRATION",
+        "LabelConfiguracionServicios":"Services Settings",
+        "LabelConfiguracionUniversidades":"Universities Settings",
+        "LabelNombre":"Name"
     }
 }
