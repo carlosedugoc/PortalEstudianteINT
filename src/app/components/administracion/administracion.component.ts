@@ -41,6 +41,7 @@ export class AdministracionComponent implements OnChanges {
   }
 
   cargar_datos(IdUniversidad:string){
+    this.serv = false
     this.url_servicio = undefined
     if (IdUniversidad == "0"){
       this.mostrar_tabla = false 
@@ -84,11 +85,17 @@ export class AdministracionComponent implements OnChanges {
         })
       })
   }
-  
+  public serv:boolean = false
   getServicios(IdUniversidad:String){
     const promesa = new Promise((resolve,reject)=>{
+      this.servicios = []
       this.adminService.getServicios(IdUniversidad,this.url_Servicios_backend.UrlGetServicios).subscribe(servicios=>{
         this.servicios = servicios
+        if (this.servicios.length == 0){
+          this.serv = true
+        }else{
+          this.serv = false
+        }
         resolve()
       },error =>{
         reject(error)
@@ -145,7 +152,6 @@ export class AdministracionComponent implements OnChanges {
           if (!encontrado){
             this.faltantes.push({
               id_tipo:tipo.id_tipo,
-              nombre_tipo:tipo.tipo,
               nombre_item:tipo.description,
               codigo_item:tipo.id_item,
               codigo_universidad:IdUniversidad
@@ -160,6 +166,28 @@ export class AdministracionComponent implements OnChanges {
           if(itemsOrdenados.length>0){ this.servicios[idx].datos = itemsOrdenados }
         }
       }
+
+
+
+      // let encont:boolean = false
+      // let eliminados:any[] = []
+      // for(let tipo of this.tipos){
+      //   for(let item of this.servicios){
+      //     for(let dato of item.datos){
+      //       if (dato.nombre_item.toUpperCase() == tipo.description.toUpperCase()){
+      //         encont = true
+      //         break
+      //       }
+      //       eliminados.push(dato)
+      //     }
+      //   }
+      // }
+      // console.log(eliminados)
+
+
+
+
+      console.log(this.servicios)
   }
 
   getTitulos(IdUniversidad:string){
@@ -184,6 +212,7 @@ export class AdministracionComponent implements OnChanges {
 
   getNiveles(){
     const promesa = new Promise((resolve,reject)=>{
+      this.levels = []
       this.total_niveles = 0
       this.adminService.getTitulos(this.token, this.url_servicio.ServicioNivel).subscribe(niveles=>{
         this.levels = niveles.json()
@@ -198,6 +227,7 @@ export class AdministracionComponent implements OnChanges {
 
   getModalidades(){
     const promesa = new Promise((resolve,reject)=>{
+      this.modality = []
       this.total_modalidades = 0
       this.adminService.getTitulos(this.token, this.url_servicio.ServicioModalidad).subscribe(modalidades=>{
         this.modality = modalidades.json()
@@ -212,9 +242,15 @@ export class AdministracionComponent implements OnChanges {
 
   getEstados(){
     const promesa = new Promise((resolve,reject)=>{
+      this.status = []
       this.total_estados = 0
       this.adminService.getTitulos(this.token,this.url_servicio.ServicioEstado).subscribe(estados=>{
         this.status = estados.json()
+        this.status.push({
+          statusId :'AC',
+          description: 'Acudiente',
+          statusType:""
+        })
         this.total_estados = this.status.length
         resolve(estados)
       },error=>{
@@ -297,14 +333,18 @@ export class AdministracionComponent implements OnChanges {
     }
   }
 
- public faltantes:any[] 
-
+public faltantes:any[] 
+public faltantesMensaje:any[]
   saveItems(faltantes:any[], IdUniversidad){
-    console.log('faltantes',faltantes,'url',this.url_Servicios_backend)
-    //this.showData()
-    // this.adminService.saveItems(faltantes,this.url_Servicios_backend.UrlAddServicios).subscribe(data=>{
-    //   this.procesarInformacion(IdUniversidad)
-    // })
+    this.faltantesMensaje = faltantes
+    document.getElementById('openModalButton').click()
+    console.log('SaveItems - faltantes',faltantes,'url',this.url_Servicios_backend)
+    this.adminService.saveItems(faltantes,this.url_Servicios_backend.UrlUpdateServicios).subscribe(data=>{
+      this.getServicios(IdUniversidad).then(()=>{
+        this.procesarInformacion(IdUniversidad)
+      })
+    })
+
   }
 
 }

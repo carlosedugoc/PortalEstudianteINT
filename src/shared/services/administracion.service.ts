@@ -59,6 +59,19 @@ actualizaItem( item:any, url:string  ){
               console.log('error',error)
             })
     }
+
+actualizarServicio(datos:any, url:string ){
+  let body = JSON.stringify( datos );
+  let headers = new Headers({
+    'Content-Type':'application/json'
+  });
+  return this.http.put(  url , body, { headers }  )
+        .map( res=>{
+          return res;
+        },error=>{
+          console.log('error',error)
+        })
+}
   
 saveItems( items:any[], url:string ){
   
@@ -66,14 +79,30 @@ saveItems( items:any[], url:string ){
   let headers = new Headers({
     'Content-Type':'application/json'
   });
-
   return this.http.post(url, body, { headers }  )
         .map( res=>{
-          console.log(res.json());
-          return res.json();
+          console.log(res);
+          return res;
         })
+
 }
 
-  
+getIdioma(usuario:string, codUniversidad:number,url:string){
+  if (usuario == '' || usuario == undefined){usuario='Admin'}
+  return this.http.get(url.replace('{usuario}',usuario) + codUniversidad).map(servicios=> servicios.json())
+}
+
+updateIdioma(idioma:any,url:string){
+  let body = JSON.stringify( idioma );
+  let headers = new Headers({
+    'Content-Type':'application/json'
+  });
+  return this.http.put(  url , body, { headers }  )
+        .map( res=>{
+          return res.json();
+        },error=>{
+          console.log('error',error)
+        })
+}
 
 }

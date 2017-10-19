@@ -6,51 +6,52 @@
                     <thead class="">
                         <tr class="headBold">
                           <th colspan="1" rowspan="2">{{ 'Administracion.LabelServicios' | translate }}</th>
-                          <th [attr.colspan]="total_modalidades">{{ 'Administracion.LabelModalidades' | translate }}</th>
-                          <th [attr.colspan]="total_niveles">{{total_niveles}} {{ 'Administracion.LabelNiveles' | translate }}</th>
-                          <th [attr.colspan]="total_estados">{{ 'Administracion.LabelEstados' | translate }}</th>
+                          <th *ngIf="servicios.length > 0 && servicios[0].datos.length > 0" [attr.colspan]="total_modalidades">{{ 'Administracion.LabelModalidades' | translate }}</th>
+                          <th *ngIf="servicios.length > 0 && servicios[0].datos.length > 0" [attr.colspan]="total_niveles">{{total_niveles}} {{ 'Administracion.LabelNiveles' | translate }}</th>
+                          <th *ngIf="servicios.length > 0 && servicios[0].datos.length > 0" [attr.colspan]="total_estados">{{ 'Administracion.LabelEstados' | translate }}</th>
                           <th colspan="1" rowspan="2" class="boxInput">URL</th>
                           <th colspan="1" rowspan="2" class="boxSwitch">{{ 'Administracion.LabelHabilidar' | translate }}</th>
                         </tr>
-                        <tr>
+                        <tr *ngIf="servicios.length > 0 && servicios[0].datos.length > 0">
                           <!-- <th class="boxCheckbox" *ngFor="let modalidad of modalidades">{{modalidad.description}}</th>
                           <th class="boxCheckbox" *ngFor="let nivel of niveles">{{nivel.description}}</th>
                           <th class="boxCheckbox" *ngFor="let estado of estados">{{estado.description}}</th> -->
-                          <th class="boxCheckbox" *ngFor="let tipo of tipos">{{tipo.description}}</th>
+                          <th  class="boxCheckbox" *ngFor="let tipo of tipos">{{tipo.description}}</th>
                         </tr>
                     </thead>
                   
                     <tbody>
-                        <tr *ngFor="let servicio of servicios">
+                        <tr *ngFor="let servicio of servicios; let idxServicio = index">
                             <td data-title="Servicio" class="boxFirstInput">
                                 <div class="wrapService">
                                     <div class="txt">
                                         {{servicio.nombre}}
                                     </div>
                                     <div class="btn-group">
-                                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  [disabled] = "!servicio.habilitar">
                                             <i class="fa fa-check-square-o" aria-hidden="true"></i> <span class="caret"></span>
                                         </button>
                                         <ul class="dropdown-menu">
-                                            <li><a href="#">Seleccionar todos</a></li>
-                                            <li><a href="#">Deseleccionar todos</a></li>
+                                            <li><a (click)="ModificarTodos(true,idxServicio)" role="button">Seleccionar todos</a></li>
+                                            <li><a (click)="ModificarTodos(false,idxServicio)" role="button">Deseleccionar todos</a></li>
                                         </ul>
                                     </div>
                                 </div>
                             </td>
                             <td *ngFor="let item of servicio.datos" class="boxCheckbox">
                                 <label class="control control--checkbox">
-                                    <input type="checkbox" [checked]="item.dato" (change)="updateItem(item.id,!item.dato)" />
+                                    <!-- <input type="checkbox" [checked]="item.dato" [disabled] = "!servicio.habilitar" (change)="updateItem(item.id,!item.dato)" /> -->
+                                    <input type="checkbox" [(ngModel)]="item.dato" [disabled] = "!servicio.habilitar" (change)="updateItem(item.id,item.dato)" />
                                     <div class="control__indicator"></div>
                                 </label>
                             </td>
                             <td data-title="URL" class="boxInput">
-                                <input type="text" class="form-control" value="http://poli.edu.co">
+                                <input type="text" [(ngModel)]="servicio.url"  [disabled] = "!servicio.habilitar" name="url" class="form-control" (blur)="updateServicio(servicio.id,'Url',servicio.url)">
                             </td>
                             <td data-title="Habilitar / Deshabilitar" class="boxSwitch">
                                 <div class="card">
                                     <label>
-                                        <input type="checkbox" checked="checked" /><span class="switch"></span><span class="toggle">    </span>
+                                        <input type="checkbox" [(ngModel)]="servicio.habilitar" (change)="updateServicio(servicio.id,'Estado',servicio.habilitar)" /><span class="switch"></span><span class="toggle">    </span>
                                     </label>
                                 </div>
                             </td>

@@ -9,7 +9,7 @@
             </div>
             <div class="carrer">
                 <div class="boxSelect">
-                    <select name="" id="input" class="form-control" required="required" (change)="cambiar($event.target.value)" name="usuarios">
+                    <select name="" id="input" [(ngModel)]="usuario" class="form-control" required="required" (change)="cambiar($event.target.value)" name="usuarios">
                         <option value="">Administrador ILUMNO</option>
                         <option value="AA">Administrador Area Andina</option>
                         <option value="Poli">Administrador Politécnico</option>
@@ -67,7 +67,7 @@
                             <ul class="list-inline">
                                 <li>
                                     <div class="boxSelect">
-                                        <select name="" id="input" class="form-control" required="required" (change)="switchLanguage($event.target.value)">
+                                        <select name="" id="input" class="form-control" required="required" [value]="idioma" (change)="switchLanguage($event.target.value)">
                                             <option value="es">ES</option>
                                             <option value="en">EN</option>
                                             <option value="pt">PT</option>

@@ -9,6 +9,8 @@
                         <a href="#">Administración</a>
                     </li>
                     <li class="active">Configuración de servicios</li>
+
+                        <button id="openModalButton" [hidden]="true" data-toggle="modal" data-target="#modal-id">Open Modal</button>
                 </ol>
             </section>
             <section id="mainContent">
@@ -43,6 +45,10 @@
                                     <li role="presentation"><a href="#tab4" aria-controls="tab4" role="tab" data-toggle="tab">{{ 'Administracion.LabelPortales' | translate }}</a></li>
                                 </ul>
 
+                                <div *ngIf="serv" class="alert alert-info" role="alert">
+                                        Para poder configurar servicios antes es necesario <strong>configurar la universidad</strong>
+                                </div>
+
                                 <div *ngIf="loading">
                                     <br>
                                     <i class="fa fa-spinner fa-pulse fa-2x fa-fw"></i>
@@ -52,6 +58,9 @@
 
                                 <div class="tab-content" *ngIf="!loading && mostrar_tabla">
                                     <div role="tabpanel" class="tab-pane fade in active" id="tab1">
+                      
+
+                           
                                         <app-lista-servicios [total_modalidades]= "total_modalidades"  [total_niveles] = "total_niveles"
                                               [total_estados] = "total_estados" [tipos] = "tipos" [servicios] = "servicios | filtroServicios:1">
                                         </app-lista-servicios>
@@ -76,8 +85,42 @@
                         </div>
                     </div>
                 </div>
+
+
             </section>
         </section>
+
+
+
+        <section id="boxModal">
+            <div class="modal fade" id="modal-id">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>Debes revisar la configuración de servicios</h4>
+                        </div>
+                        <div class="modal-body" style="height: 100px;overflow: scroll;">
+                            
+                                <ul>
+                                    <li *ngFor="let item of faltantesMensaje | filtroFaltantes:1"><i class="fa fa-minus" aria-hidden="true"></i>En modalidad Académica: se agregó <strong>{{item.nombre_item}}</strong> </li>
+                                    <li *ngFor="let item of faltantesMensaje | filtroFaltantes:2"><i class="fa fa-minus" aria-hidden="true"></i>En nivel Académico: se agregó <strong>{{item.nombre_item}}</strong> </li>
+                                    <li *ngFor="let item of faltantesMensaje | filtroFaltantes:3"><i class="fa fa-minus" aria-hidden="true"></i>En Tipo de Usuario: se agregó <strong>{{item.nombre_item}}</strong> </li>
+                                </ul>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">CERRAR</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <script>
+                $('#boxModal').modal('show')
+            </script>
+
+
+
     </div>
 
 </div>

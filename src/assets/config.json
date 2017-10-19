@@ -20,9 +20,9 @@
         "UrlGetServicios":"http://10.75.8.109/PEServices/Api/Servicios/Universidad/",
         "UrlGetUniversidades":"http://10.75.8.109/PEServices/Api/Universidades/",
         "UrlUpdateServicios":"http://10.75.8.109/PEServices/api/ItemSerUni/",
-        "UrlAddServicios":"http://10.75.8.109/PEServices/Api/Servicios/Universidad/",
-        "UrlGetIdioma":"http://10.75.8.109/PEServices/Api/Servicios/Universidad/",
-        "UrlUpdateIdioma":"http://10.75.8.109/PEServices/Api/Servicios/Universidad/"
+        "UrlUpdateServicio":"http://10.75.8.109/PEServices/api/ServiciosUniversidad/",
+        "UrlGetIdioma":"http://10.75.8.109/PEServices/api/Usuario/{usuario}/Universidad/",
+        "UrlUpdateIdioma":"http://10.75.8.109/PEServices/api/Usuario/Idioma/"
     }
 }
 

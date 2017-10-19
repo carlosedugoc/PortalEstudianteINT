@@ -13,7 +13,7 @@ export class ListaServiciosComponent {
   @Input('total_estados') total_estados:number
   @Input('servicios') servicios:Servicio[]
   @Input('tipos') tipos:any[]
-  
+
   constructor(private adminService:AdministracionService) { }
 
   updateItem(id:number,estado:boolean){
@@ -22,9 +22,26 @@ export class ListaServiciosComponent {
     console.log(JSON.parse(servicios).UrlUpdateServicios)
 
     this.adminService.actualizaItem({id:id,estado:estado},JSON.parse(servicios).UrlUpdateServicios).subscribe(data =>{
-      
+      console.log('Item actualizado con éxito')
     })
-    // console.log('evento',event, 'item',estado)
+  }
+
+  updateServicio(idServicio:number, campo:string, valor:any ){
+    console.log(idServicio,campo,valor)
+    var servicios:any = localStorage.getItem('servicios')
+    var url:string = JSON.parse(servicios).UrlUpdateServicio + campo
+    this.adminService.actualizarServicio({id:idServicio,valor:valor},url).subscribe(data=>{
+      console.log('Servicio actualizado con éxito')
+    })
+  }
+
+  ModificarTodos(estado:boolean, idx:number){
+    console.log(estado,idx)
+
+    for(let dato of this.servicios[idx].datos){
+      dato.dato = estado
+      this.updateItem(dato.id,estado)
+    }
   }
 
 }

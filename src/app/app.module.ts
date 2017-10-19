@@ -13,6 +13,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { appRouting } from "./app.routes";
 import { APP_BASE_HREF } from '@angular/common';
+import { FormsModule }   from '@angular/forms';
+import { FiltroFaltantesPipe } from './pipes/filtro-faltantes.pipe';
 
 export function createTranslateLoader(http: HttpClient) {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -26,13 +28,15 @@ export function createTranslateLoader(http: HttpClient) {
     ListaServiciosComponent,
     FiltroTipoServicioPipe,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    FiltroFaltantesPipe
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     HttpModule,
     appRouting,
+    FormsModule,
     TranslateModule.forRoot({
         loader: {
             provide: TranslateLoader,
