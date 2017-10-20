@@ -85,6 +85,9 @@ export class AdministracionComponent implements OnChanges {
         })
       })
   }
+
+
+
   public serv:boolean = false
   getServicios(IdUniversidad:String){
     const promesa = new Promise((resolve,reject)=>{
@@ -169,23 +172,26 @@ export class AdministracionComponent implements OnChanges {
 
 
 
-      // let encont:boolean = false
-      // let eliminados:any[] = []
-      // for(let tipo of this.tipos){
-      //   for(let item of this.servicios){
-      //     for(let dato of item.datos){
-      //       if (dato.nombre_item.toUpperCase() == tipo.description.toUpperCase()){
-      //         encont = true
-      //         break
-      //       }
-      //       eliminados.push(dato)
-      //     }
-      //   }
-      // }
-      // console.log(eliminados)
+      let encont:boolean = false
+      let eliminados:any[] = []
+
+      for (let servicio of this.servicios){
+        for(let item of servicio.datos){
+          encont = false
+          for (let tipo of this.tipos){
+            if (item.nombre_item.toUpperCase() == tipo.description.toUpperCase()){
+              encont=true
+              break
+            }
+          }
+          if(!encont){
+            eliminados.push(item)
+          }
+        }
+      }
 
 
-
+      console.log(eliminados)
 
       console.log(this.servicios)
   }
