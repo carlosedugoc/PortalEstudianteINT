@@ -9,7 +9,11 @@ export class AdministracionService {
   constructor(private http:Http) { }
 
   getServicios(IdUniversidad:String, url:string ){
-    return this.http.get(url + IdUniversidad).map(servicios=> servicios.json())
+    return this.http.get(url + IdUniversidad).map(servicios=>{ 
+      console.log('s',servicios)
+      console.log('json',servicios.json())
+      return servicios.json()
+    })
   }
 
 

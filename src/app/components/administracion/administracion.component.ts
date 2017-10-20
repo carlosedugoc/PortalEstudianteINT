@@ -33,6 +33,9 @@ export class AdministracionComponent implements OnChanges {
   public rol:string
   public url_Servicios_backend:any
   public tipos:any[]
+  public faltantes:any[] 
+  public faltantesMensaje:any[]
+  public eliminados:any[]
 
   constructor(private adminService:AdministracionService,
               private http: Http) { 
@@ -43,6 +46,8 @@ export class AdministracionComponent implements OnChanges {
   cargar_datos(IdUniversidad:string){
     this.serv = false
     this.url_servicio = undefined
+    this.eliminados = []
+    this.faltantesMensaje = []
     if (IdUniversidad == "0"){
       this.mostrar_tabla = false 
       return
@@ -65,8 +70,6 @@ export class AdministracionComponent implements OnChanges {
           this.getTitulos(IdUniversidad).then(()=>{
             this.getServicios(IdUniversidad).then(()=>{
               this.procesarInformacion(IdUniversidad)
-              this.loading= false
-              this.mostrar_tabla = true 
               return Promise.resolve()
             })
           }).catch((err)=>{
@@ -86,14 +89,14 @@ export class AdministracionComponent implements OnChanges {
       })
   }
 
-
-
   public serv:boolean = false
   getServicios(IdUniversidad:String){
     const promesa = new Promise((resolve,reject)=>{
       this.servicios = []
-      this.adminService.getServicios(IdUniversidad,this.url_Servicios_backend.UrlGetServicios).subscribe(servicios=>{
-        this.servicios = servicios
+      this.adminService.getServicios(IdUniversidad,this.url_Servicios_backend.UrlGetServicios).subscribe(data=>{
+        console.log('sr',data)
+        this.servicios = data
+        
         if (this.servicios.length == 0){
           this.serv = true
         }else{
@@ -108,6 +111,7 @@ export class AdministracionComponent implements OnChanges {
   }
 
   procesarInformacion(IdUniversidad:String){
+    console.log('paila')
     this.tipos = []
     for(let mod of this.modality ){
       this.tipos.push({
@@ -137,62 +141,63 @@ export class AdministracionComponent implements OnChanges {
     }
 
     this.faltantes = []  
+    this.eliminados = []
     let encontrado:boolean = false
 
-    for (var idx = 0; idx < this.servicios.length; idx++) {
-      var itemsOrdenados:Item[] = []
-      for(let tipo of this.tipos){
-          let items:Item[]
-          encontrado = false
-          items = this.servicios[idx].datos
-          for (var index = 0; index < items.length; index++) {
-            if (tipo.description.toUpperCase() == items[index].nombre_item.toUpperCase()){
-              itemsOrdenados.push(items[index])
-              encontrado = true 
-              break
-            }
-          }
-          if (!encontrado){
-            this.faltantes.push({
-              id_tipo:tipo.id_tipo,
-              nombre_item:tipo.description,
-              codigo_item:tipo.id_item,
-              codigo_universidad:IdUniversidad
-            })
+    console.log('serv', this.servicios)
+
+    for (let servicio of this.servicios){
+      for(let item of servicio.datos){
+        encontrado = false
+        for (let tipo of this.tipos){
+          if (item.nombre_item.toUpperCase() == tipo.description.toUpperCase()){
+            encontrado=true
+            break
           }
         }
-        if(idx == 0 && this.faltantes.length > 0){
-          this.saveItems(this.faltantes,IdUniversidad)
-          console.log('faltantes',this.faltantes)
-          break
-        }else{
-          if(itemsOrdenados.length>0){ this.servicios[idx].datos = itemsOrdenados }
+        if(!encontrado){
+          this.eliminados.push(item)
         }
       }
+      break
+    }
 
-
-
-      let encont:boolean = false
-      let eliminados:any[] = []
-
-      for (let servicio of this.servicios){
-        for(let item of servicio.datos){
-          encont = false
-          for (let tipo of this.tipos){
-            if (item.nombre_item.toUpperCase() == tipo.description.toUpperCase()){
-              encont=true
-              break
-            }
-          }
-          if(!encont){
-            eliminados.push(item)
+    for (let servicio of this.servicios){
+      let itemsOrdenados:Item[] = []
+      for (let tipo of this.tipos){
+        encontrado = false
+        for (let item of servicio.datos){
+          if (item.nombre_item.toUpperCase() == tipo.description.toUpperCase()){
+            itemsOrdenados.push(item)
+            encontrado=true
+            break
           }
         }
+        if (!encontrado){
+          this.faltantes.push({
+            id_tipo:tipo.id_tipo,
+            nombre_item:tipo.description,
+            codigo_item:tipo.id_item,
+            codigo_universidad:IdUniversidad
+          })
+        }
       }
+      if(this.faltantes.length > 0){
+        this.saveItems(this.faltantes,IdUniversidad)
+        console.log('faltantes',this.faltantes)
+        return
+      }else{
+        servicio.datos = itemsOrdenados
+      }
+    }
 
+    if(this.eliminados.length > 0 || (this.faltantesMensaje && this.faltantesMensaje.length>0) ){
+      document.getElementById('openModalButton').click()
+    }
 
-      console.log(eliminados)
-
+    this.loading= false
+    this.mostrar_tabla = true 
+      console.log('eliminados',this.eliminados)
       console.log(this.servicios)
   }
 
@@ -339,11 +344,10 @@ export class AdministracionComponent implements OnChanges {
     }
   }
 
-public faltantes:any[] 
-public faltantesMensaje:any[]
+
   saveItems(faltantes:any[], IdUniversidad){
     this.faltantesMensaje = faltantes
-    document.getElementById('openModalButton').click()
+    // document.getElementById('openModalButton').click()
     console.log('SaveItems - faltantes',faltantes,'url',this.url_Servicios_backend)
     this.adminService.saveItems(faltantes,this.url_Servicios_backend.UrlUpdateServicios).subscribe(data=>{
       this.getServicios(IdUniversidad).then(()=>{

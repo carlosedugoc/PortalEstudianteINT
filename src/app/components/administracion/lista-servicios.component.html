@@ -7,7 +7,7 @@
                         <tr class="headBold">
                           <th colspan="1" rowspan="2">{{ 'Administracion.LabelServicios' | translate }}</th>
                           <th *ngIf="servicios.length > 0 && servicios[0].datos.length > 0" [attr.colspan]="total_modalidades">{{ 'Administracion.LabelModalidades' | translate }}</th>
-                          <th *ngIf="servicios.length > 0 && servicios[0].datos.length > 0" [attr.colspan]="total_niveles">{{total_niveles}} {{ 'Administracion.LabelNiveles' | translate }}</th>
+                          <th *ngIf="servicios.length > 0 && servicios[0].datos.length > 0" [attr.colspan]="total_niveles">{{ 'Administracion.LabelNiveles' | translate }}</th>
                           <th *ngIf="servicios.length > 0 && servicios[0].datos.length > 0" [attr.colspan]="total_estados">{{ 'Administracion.LabelEstados' | translate }}</th>
                           <th colspan="1" rowspan="2" class="boxInput">URL</th>
                           <th colspan="1" rowspan="2" class="boxSwitch">{{ 'Administracion.LabelHabilidar' | translate }}</th>

@@ -28,9 +28,6 @@
                                             <option value="0" hidden>Seleccione...</option>
                                             <option value="1">Areandina</option>
                                             <option value="2">Politécnico</option>
-                                            <option value="3">Central</option>
-                                            <option value="4">UANE</option>
-                                            <option value="5">USAM</option>
                                         </select>
                                     </div>
                                 </div>
@@ -56,11 +53,8 @@
                                 </div>
 
 
-                                <div class="tab-content" *ngIf="!loading && mostrar_tabla">
+                                <div class="tab-content" *ngIf="!loading && mostrar_tabla && !serv">
                                     <div role="tabpanel" class="tab-pane fade in active" id="tab1">
-                      
-
-                           
                                         <app-lista-servicios [total_modalidades]= "total_modalidades"  [total_niveles] = "total_niveles"
                                               [total_estados] = "total_estados" [tipos] = "tipos" [servicios] = "servicios | filtroServicios:1">
                                         </app-lista-servicios>
@@ -105,6 +99,9 @@
                                     <li *ngFor="let item of faltantesMensaje | filtroFaltantes:1"><i class="fa fa-minus" aria-hidden="true"></i>En modalidad Académica: se agregó <strong>{{item.nombre_item}}</strong> </li>
                                     <li *ngFor="let item of faltantesMensaje | filtroFaltantes:2"><i class="fa fa-minus" aria-hidden="true"></i>En nivel Académico: se agregó <strong>{{item.nombre_item}}</strong> </li>
                                     <li *ngFor="let item of faltantesMensaje | filtroFaltantes:3"><i class="fa fa-minus" aria-hidden="true"></i>En Tipo de Usuario: se agregó <strong>{{item.nombre_item}}</strong> </li>
+                                    <li *ngFor="let item of eliminados | filtroFaltantes:1"><i class="fa fa-minus" aria-hidden="true"></i>En modalidad Académica: se eliminó <strong>{{item.nombre_item}}</strong> </li>
+                                    <li *ngFor="let item of eliminados | filtroFaltantes:2"><i class="fa fa-minus" aria-hidden="true"></i>En nivel Académico: se eliminó <strong>{{item.nombre_item}}</strong> </li>
+                                    <li *ngFor="let item of eliminados | filtroFaltantes:3"><i class="fa fa-minus" aria-hidden="true"></i>En Tipo de Usuario: se eliminó <strong>{{item.nombre_item}}</strong> </li>
                                 </ul>
 
                         </div>
@@ -115,11 +112,6 @@
                 </div>
             </div>
         </section>
-        <script>
-                $('#boxModal').modal('show')
-            </script>
-
-
 
     </div>
 
