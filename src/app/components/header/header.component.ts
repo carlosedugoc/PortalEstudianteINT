@@ -20,9 +20,9 @@ public universidad:string
 constructor(private translate: TranslateService, 
             private router:Router, 
             private adminService:AdministracionService) {
-  let lan = window.navigator.language.substr(0,2)
-  translate.setDefaultLang(lan);
-  this.idioma = lan
+    let lan = window.navigator.language.substr(0,2)
+    translate.setDefaultLang(lan);
+    this.idioma = lan
 
   }
 

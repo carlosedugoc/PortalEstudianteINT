@@ -12,7 +12,7 @@
         "LabelUniversidad":"University"
     },
     "Header":{
-        "LabelPrincipal":"Main",
+        "LabelPrincipal":"MAIN",
         "LabelAdministracion":"ADMINISTRATION",
         "LabelConfiguracionServicios":"Services Settings",
         "LabelConfiguracionUniversidades":"Universities Settings",

@@ -13,7 +13,15 @@
                         <button id="openModalButton" [hidden]="true" data-toggle="modal" data-target="#modal-id">Open Modal</button>
                 </ol>
             </section>
-            <section id="mainContent">
+
+            <section id="mainContent"  *ngIf="serv">
+                <div class="infoWarning">
+                    <i class="fa fa-warning" aria-hidden="true"></i>
+                    <p>Para poder configurar servicios antes <br>es necesario <strong>configurar la universidad</strong></p>
+                </div>
+            </section>
+
+            <section id="mainContent"  *ngIf="!serv">
                 <div class="module">
                     <div class="headModule" *ngIf="!rol || rol == '' || rol == 'undefined'" >
                         <h1>Seleccione una Universidad y configure los servicios</h1>
@@ -33,7 +41,10 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row boxTabs">
+                        
+                      
+
+                        <div class="row boxTabs" *ngIf="!serv">
                             <div class="col-xs-12">
                                 <ul class="nav nav-pills" role="tablist">
                                     <li role="presentation" class="active"><a href="#tab1" aria-controls="tab1" role="tab" data-toggle="tab">{{ 'Administracion.LabelConsultaAcademica' | translate }}</a></li>
@@ -42,9 +53,11 @@
                                     <li role="presentation"><a href="#tab4" aria-controls="tab4" role="tab" data-toggle="tab">{{ 'Administracion.LabelPortales' | translate }}</a></li>
                                 </ul>
 
-                                <div *ngIf="serv" class="alert alert-info" role="alert">
+
+
+                                <!-- <div *ngIf="serv" class="alert alert-info" role="alert">
                                         Para poder configurar servicios antes es necesario <strong>configurar la universidad</strong>
-                                </div>
+                                </div> -->
 
                                 <div *ngIf="loading">
                                     <br>

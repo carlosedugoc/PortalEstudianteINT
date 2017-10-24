@@ -394,7 +394,6 @@ input[type='checkbox'] {
     top: -50px; }
 
 body {
-  background-color: #f1f1f1;
   font-family: "Open Sans", sans-serif;
   color: #565656; }
   body section {
@@ -580,7 +579,8 @@ header, footer {
     color: #565656; }
 
 #mainContent {
-  padding: 20px 20px 120px;
+  padding: 20px;
+  border-left: 1px solid #b2b2b2;
   background-color: #f1f1f1; }
   #mainContent .module {
     background-color: #FFF;
@@ -671,11 +671,6 @@ header, footer {
         #boxModal .modal .modal-content .modal-footer button:hover {
           background-color: #012351;
           color: #ede000; }
-
-.boxFooter {
-  position: fixed;
-  width: 100%;
-  bottom: 0; }
 
 footer > .row {
   display: -webkit-flex;

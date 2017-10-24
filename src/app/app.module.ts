@@ -15,6 +15,7 @@ import { appRouting } from "./app.routes";
 import { APP_BASE_HREF } from '@angular/common';
 import { FormsModule }   from '@angular/forms';
 import { FiltroFaltantesPipe } from './pipes/filtro-faltantes.pipe';
+import { CapitalizarPipe } from './pipes/capitalizar.pipe';
 
 export function createTranslateLoader(http: HttpClient) {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -29,7 +30,8 @@ export function createTranslateLoader(http: HttpClient) {
     FiltroTipoServicioPipe,
     HeaderComponent,
     FooterComponent,
-    FiltroFaltantesPipe
+    FiltroFaltantesPipe,
+    CapitalizarPipe
   ],
   imports: [
     BrowserModule,

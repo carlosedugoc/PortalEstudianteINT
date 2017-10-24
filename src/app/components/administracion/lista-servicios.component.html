@@ -13,10 +13,7 @@
                           <th colspan="1" rowspan="2" class="boxSwitch">{{ 'Administracion.LabelHabilidar' | translate }}</th>
                         </tr>
                         <tr *ngIf="servicios.length > 0 && servicios[0].datos.length > 0">
-                          <!-- <th class="boxCheckbox" *ngFor="let modalidad of modalidades">{{modalidad.description}}</th>
-                          <th class="boxCheckbox" *ngFor="let nivel of niveles">{{nivel.description}}</th>
-                          <th class="boxCheckbox" *ngFor="let estado of estados">{{estado.description}}</th> -->
-                          <th  class="boxCheckbox" *ngFor="let tipo of tipos">{{tipo.description}}</th>
+                          <th  class="boxCheckbox" *ngFor="let tipo of tipos">{{tipo.description | capitalizar:false}}</th>
                         </tr>
                     </thead>
                   
@@ -40,7 +37,6 @@
                             </td>
                             <td *ngFor="let item of servicio.datos" class="boxCheckbox">
                                 <label class="control control--checkbox">
-                                    <!-- <input type="checkbox" [checked]="item.dato" [disabled] = "!servicio.habilitar" (change)="updateItem(item.id,!item.dato)" /> -->
                                     <input type="checkbox" [(ngModel)]="item.dato" [disabled] = "!servicio.habilitar" (change)="updateItem(item.id,item.dato)" />
                                     <div class="control__indicator"></div>
                                 </label>
